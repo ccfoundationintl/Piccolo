@@ -1,0 +1,33 @@
+<%= form_for(@donation) do |f| %>
+  <% if @donation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
+
+      <ul>
+      <% @donation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :is_registration_fee %><br>
+    <%= f.check_box :is_registration_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :is_donation %><br>
+    <%= f.check_box :is_donation %>
+  </div>
+  <div class="field">
+    <%= f.label :donor_email %><br>
+    <%= f.text_field :donor_email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @donation.amount %>
+</p>
+
+<p>
+  <strong>Is registration fee:</strong>
+  <%= @donation.is_registration_fee %>
+</p>
+
+<p>
+  <strong>Is donation:</strong>
+  <%= @donation.is_donation %>
+</p>
+
+<p>
+  <strong>Donor email:</strong>
+  <%= @donation.donor_email %>
+</p>
+
+<%= link_to 'Edit', edit_donation_path(@donation) %> |
+<%= link_to 'Back', donations_path %>
