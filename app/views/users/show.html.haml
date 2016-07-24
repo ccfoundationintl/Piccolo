@@ -1,0 +1,34 @@
+%p#notice= notice
+%p
+  %strong First name:
+  = @user.first_name
+%p
+  %strong Last name:
+  = @user.last_name
+%p
+  %strong Bio:
+  = @user.bio
+%p
+  %strong Class year:
+  = @user.class_year
+%p
+  %strong Raise goal:
+  = @user.raise_goal
+%p
+  %strong Gender:
+  = @user.gender
+%p
+  %strong Tshirt:
+  = @user.tshirt
+%p
+  %strong Admin:
+  = @user.admin
+%p
+  %strong Contact name:
+  = @user.contact_name
+%p
+  %strong Contact number:
+  = @user.contact_number
+= link_to 'Edit', edit_user_path(@user)
+|
+= link_to 'Back', users_path

@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Listing Sponsors
+%table
+  %thead
+    %tr
+      %th Name
+      %th Url
+      %th{:colspan => "3"}
+  %tbody
+    - @sponsors.each do |sponsor|
+      %tr
+        %td= sponsor.name
+        %td= sponsor.url
+        %td= link_to 'Show', sponsor
+        %td= link_to 'Edit', edit_sponsor_path(sponsor)
+        %td= link_to 'Destroy', sponsor, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Sponsor', new_sponsor_path

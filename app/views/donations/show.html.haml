@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Amount:
+  = @donation.amount
+%p
+  %strong Is registration fee:
+  = @donation.is_registration_fee
+%p
+  %strong Is donation:
+  = @donation.is_donation
+%p
+  %strong Donor email:
+  = @donation.donor_email
+= link_to 'Edit', edit_donation_path(@donation)
+|
+= link_to 'Back', donations_path

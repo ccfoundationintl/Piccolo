@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Listing Donations
+%table
+  %thead
+    %tr
+      %th Amount
+      %th Is registration fee
+      %th Is donation
+      %th Donor email
+      %th{:colspan => "3"}
+  %tbody
+    - @donations.each do |donation|
+      %tr
+        %td= donation.amount
+        %td= donation.is_registration_fee
+        %td= donation.is_donation
+        %td= donation.donor_email
+        %td= link_to 'Show', donation
+        %td= link_to 'Edit', edit_donation_path(donation)
+        %td= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Donation', new_donation_path

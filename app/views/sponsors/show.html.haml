@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @sponsor.name
+%p
+  %strong Url:
+  = @sponsor.url
+= link_to 'Edit', edit_sponsor_path(@sponsor)
+|
+= link_to 'Back', sponsors_path
