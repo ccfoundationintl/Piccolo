@@ -1,4 +1,5 @@
 # Piccolo
+[![Build Status](https://travis-ci.org/demon-io/piccolo.svg?branch=master)](https://travis-ci.org/demon-io/piccolo)
 
 The Piccolo template is a Ruby on Rails web app template that allows charity organizations to develop websites where they can easily raise money for their events.
 
