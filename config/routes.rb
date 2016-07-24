@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sponsors
   resources :teams
   resources :users
   get 'about/index'
