@@ -17,19 +17,17 @@
 #  updated_at     :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  first_name: MyString
-  last_name: MyString
-  bio: MyText
-  class_year: 1
-  raise_goal: 1
-  gender: MyString
-  tshirt: MyString
-  admin: false
-  contact_name: MyString
-  contact_number: MyString
+  first_name: Nick
+  last_name: Ladd
+  bio: Hi there! I am the creator of the Piccolo template. Hope you enjoy it.
+  class_year: 2017
+  raise_goal: 5000
+  gender: male
+  tshirt: medium
+  admin: true
+  contact_name: John Ladd
+  contact_number: 555-3234
 
 two:
   first_name: MyString
