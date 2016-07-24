@@ -47,4 +47,4 @@ Heroku will deploy the new version and it will be live.
 
 ## License
 
-This project is licensed under the MIT license.
+This project is licensed under the MIT license. It is truly for educational purposes.
