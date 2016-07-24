@@ -1,10 +1,10 @@
-# Piccolo Template
+# Piccolo
 
 The Piccolo template is a Ruby on Rails web app template that allows charity organizations to develop websites where they can easily raise money for their events.
 
 ## Start
 
-To use this template, make sure you have [Ruby on Rails]() and [Heroku Toolbelt]() installed on your development machine.
+To use this template, make sure you have [Ruby on Rails](http://rubyonrails.org/) and [Heroku Toolbelt](https://toolbelt.heroku.com/) installed on your development machine.
 
 Clone this repository into a folder of your choosing, and to start the setup, download the correct gems by running:
 ```
@@ -36,6 +36,14 @@ To run the tests, enter:
 $ rake test
 ```
 
+## Deployment
+
+To deploy to production, we use [Heroku](http://www.heroku.com) due to the simplicity and ease of setup. With the Heroku CLI installed, run the initial commands to login and create a new application. Once you have a local environment that you are satisfied with, run:
+```
+$ git push origin heroku
+```
+Heroku will deploy the new version and it will be live.
+
 ## License
 
-This project is licensed under the MIT license
+This project is licensed under the MIT license.
