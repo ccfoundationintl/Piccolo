@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
+
 gem 'rails', '4.2.5.1'
 
 # Use postgresql as the database for Active Record
@@ -10,6 +12,43 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+
+# Stripe API for payment processing
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
+
+# Paperclip for uploading file attachments
+gem 'paperclip'
+
+# AWS SDK gem for storing static assets on AWS S3 buckets
+gem 'aws-sdk'
+
+# Devise for authentication
+gem 'devise'
+
+# CanCanCan for authorization
+gem 'cancancan'
+
+# will_paginate for page pagination
+gem 'will_paginate'
+
+# will_paginate-bootstrap addon for will_paginate
+gem 'will_paginate-bootstrap'
+
+# font-awesome for icons
+gem 'font-awesome-rails'
+
+# bootstrap for styling
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
+# google-analytics for user tracking
+gem 'google-analytics-rails'
+
+# Use seedbank for organizing seed data information
+gem 'seedbank'
+
+# Use awesome-print for pretty-printing SQL queries
+gem 'awesome_print'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
