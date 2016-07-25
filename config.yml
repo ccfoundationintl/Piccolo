@@ -3,19 +3,45 @@
 # This is the main configuration file for the Piccolo template. It is here where you can customize everything about your instance of a Piccolo website.
 #
 
-# General Site Information
-sitename: Example Event
-site_description: Example Event is an event at Example University founded to raise money for Example Charity.
+defaults: &defaults
 
-# University Information
-university: Example University
-univeristy_url: www.exampleuniversity.com
-university_location: Example City, EX
+  # General Site Information
+  sitename: Example Event
+  site_description: Example Event is an event at Example University founded to raise money for Example Charity.
 
-# Donation Information
-charity_name: Example Charity
+  # University Information
+  university: Example University
+  univeristy_url: www.exampleuniversity.com
+  university_location: Example City, EX
 
-# Event Information
-datetime_of_event: 120349563
-location_of_event: Example Location
+  # Donation Information
+  charity_name: Example Charity
+  donation_tagline: Support our participants
 
+  # Event Information
+  datetime_of_event: 120349563
+  location_of_event: Example Location
+
+  # Event Participants (dancers, runners, ect.)
+  participant_type: runner
+
+  # Contact Information
+  address_line_1: 123 Example St.
+  address_line_2: P.O. Box 123
+  city: Example City
+  state: Example State
+  email: example@gmail.com
+  phone: 555-2345
+  twitter: http://www.example.twitter.com
+  facebook: http://www.facebook.com/example
+  instagram: http://www.instagram.com/example
+  youtube: http://www.youtube.com/example
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+test:
+  <<: *defaults
