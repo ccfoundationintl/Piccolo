@@ -45,6 +45,15 @@ $ git push origin heroku
 ```
 Heroku will deploy the new version and it will be live.
 
+## API Integrations
+
+We use a series of API integrations to make our application run smoothly. Be sure to have an account set up with the following services and their APIs:
+  * [Stripe](http://www.stripe.com) Payment processing platform
+  * [SendGrid](http://www.sendgrid.com) Email processing platform
+  * [AWS S3](http://aws.amazon.com) Static asset host provider
+  * [Heroku](http://www.heroku.com) App hosting sever
+  * [Google Analytics](http://analytics.google.com) User tracking and analytics
+
 ## License
 
 This project is licensed under the MIT license. It is truly for educational purposes.
