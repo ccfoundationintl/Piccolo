@@ -9,4 +9,10 @@
 #
 
 class Team < ActiveRecord::Base
+  has_many :dancers
+  has_many :donations, as: :donated
+
+  def self.search(query)
+    where("name LIKE ?", "%#{query}%")
+  end
 end
