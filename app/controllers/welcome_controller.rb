@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @sitename = APP_CONFIG["sitename"];
+    @top_10_teams = Team.order('amount_raised desc').limit(10)
+    @sponsors = Sponsor.all
   end
 end

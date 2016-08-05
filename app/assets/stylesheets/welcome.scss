@@ -1,3 +1,107 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.jumbotron {
+  min-height: 500px;
+  background: rgba(0,0,0,0.3);
+  color: #FFF;
+  margin-bottom: 0px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+.well-clear {
+  background: rgba(0,0,0,0.4);
+  border: 0;
+}
+.btn-sign-up {
+  background: rgba(0,0,0,0.2);
+  color: white;
+  border: 1px solid gray;
+}
+.donation-amount {
+  font-size: 22px;
+  height: auto;
+  padding: 15px;
+  padding-left: 35px;
+  color: #369ff4;
+}
+.donation-amount-btn {
+  height: auto;
+  padding: 18px;
+}
+.pre-input {
+  left: 0;
+}
+.post-input {
+  right: 0;
+}
+.post-input, .pre-input {
+  position: absolute;
+  z-index: 999;
+  font-size: 22px;
+  height: auto;
+  color: #000;
+  padding: 15px;
+}
+.btn-sign-up:hover {
+  background: rgba(255,255,255,0.3);
+  color: white;
+}
+
+.lead-text {
+  font-size: 26px;
+}
+
+/* Nav Bar Styling */
+.navbar-inverse {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Events ticker */
+.events-ticker {
+  background: #F2F2F2;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  height: 75px;
+}
+
+.events-ticker li {
+  height: 75px;
+  padding-top: 8px;
+}
+
+/* Background video */
+video#bgvid { 
+    position: absolute;
+    top: 50%;
+    vertical-align: baseline;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+    height: auto;
+    z-index: -100;
+    transition: .25s opacity .25s linear;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(https://s3.amazonaws.com/wns-dancer-photos/wns-video.jpg) no-repeat;
+    background-size: cover; 
+}
+
+video {
+    display: block;
+    object-fit: contain;
+}
+
+@media only screen and (max-width: 55em){
+    .jumbotron {
+         background:
+         url(https://s3.amazonaws.com/wns-dancer-photos/photo_grid.jpg) no-repeat;
+    }
+    #bgvid {
+        display: none;
+        background: url(https://s3.amazonaws.com/wns-dancer-photos/wns-video.jpg) repeat;
+    }
+}
