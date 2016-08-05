@@ -1,0 +1,9 @@
+- object.each do |user|
+  .col-xs-6.col-md-2
+    = link_to user do
+      .thumbnail.thumbnail-fixed-height
+        .profile-spaced{style: "background-image:url(#{user.avatar.url(:medium)})"}
+        .text-center.caption
+          %h4= name(user)
+          - if user.stafftitle.present?
+            %h6.text-muted= user.stafftitle

@@ -1,34 +1,31 @@
-%p#notice= notice
-%h1 Listing Users
-%table
-  %thead
-    %tr
-      %th First name
-      %th Last name
-      %th Bio
-      %th Class year
-      %th Raise goal
-      %th Gender
-      %th Tshirt
-      %th Admin
-      %th Contact name
-      %th Contact number
-      %th{:colspan => "3"}
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td= user.first_name
-        %td= user.last_name
-        %td= user.bio
-        %td= user.class_year
-        %td= user.raise_goal
-        %td= user.gender
-        %td= user.tshirt
-        %td= user.admin
-        %td= user.contact_name
-        %td= user.contact_number
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New User', new_user_path
+.container
+  .page-header.text-center
+    %h1
+      = APP_CONFIG['participant_type']
+  - if params[:search].nil?
+    .row
+      %h3
+        %i.fa.fa-star.text-warning
+        Top 6
+        = APP_CONFIG['participant_type'].pluralize(2)
+      = render partial: "profiles", locals: {object: @top_6_users}
+    %hr
+  .row
+    %h3
+      All
+      = APP_CONFIG['participant_type'].pluralize(2)
+  .row
+    .col-xs-4
+      .form-inline
+        = form_tag(users_path, :method => "get", id: "search-form") do
+          .input-group
+            = text_field_tag(:search, params[:search], class: "form-control input-md", placeholder: "Search #{APP_CONFIG['participant_type'].pluralize(2)}...")
+            %span.input-group-btn
+              %button.btn.btn-default{type:"button"}
+                %span.glyphicon.glyphicon-search{aria: {hidden:"true"}}
+  .row
+    %br
+    - @users = @users.paginate(page: params[:page]).per_page(24)
+    = render partial: "profiles", locals: {object: @users}
+  .pagination.pagination-centered
+    = will_paginate(@users, renderer: BootstrapPagination::Rails)

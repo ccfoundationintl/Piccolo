@@ -2,19 +2,33 @@
 #
 # Table name: users
 #
-#  id             :integer          not null, primary key
-#  first_name     :string
-#  last_name      :string
-#  bio            :text
-#  class_year     :integer
-#  raise_goal     :integer
-#  gender         :string
-#  tshirt         :string
-#  admin          :boolean
-#  contact_name   :string
-#  contact_number :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  bio                    :text
+#  class_year             :integer
+#  raise_goal             :integer
+#  gender                 :string
+#  tshirt                 :string
+#  admin                  :boolean
+#  contact_name           :string
+#  contact_number         :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
 #
 
 one:
@@ -28,15 +42,17 @@ one:
   admin: true
   contact_name: John Ladd
   contact_number: 555-3234
+  email: nick@gmail.com
 
 two:
-  first_name: MyString
-  last_name: MyString
-  bio: MyText
-  class_year: 1
-  raise_goal: 1
-  gender: MyString
-  tshirt: MyString
+  first_name: Sarah
+  last_name: Smith
+  bio: I am Sarah Smith, a fake user!
+  class_year: 2014
+  raise_goal: 100
+  gender: female
+  tshirt: large
   admin: false
-  contact_name: MyString
-  contact_number: MyString
+  contact_name: Catherine Smith
+  contact_number: 555-4324
+  email: sarah@gmail.com
