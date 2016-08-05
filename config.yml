@@ -30,6 +30,7 @@ defaults: &defaults
   address_line_2: P.O. Box 123
   city: Example City
   state: Example State
+  zip_code: 123456
   email: example@gmail.com
   phone: 555-2345
   twitter: http://www.example.twitter.com
