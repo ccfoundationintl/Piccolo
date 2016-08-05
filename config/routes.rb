@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'about/index'
+  get 'about/committee'
   get 'welcome/index'
 
   root 'welcome#index'
