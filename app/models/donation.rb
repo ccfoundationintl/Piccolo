@@ -9,7 +9,10 @@
 #  donor_email         :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  donated_id          :integer
+#  donated_type        :string
 #
 
 class Donation < ActiveRecord::Base
+  belongs_to :donated, polymorphic: true
 end
