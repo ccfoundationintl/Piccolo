@@ -6,9 +6,9 @@ class Ability
       can :manage, User, id: user.id
       if user.admin?
         can :manage, :all
-      elsif user.staff_member?
-        can :manage, Charge
-        cannot :read, :admin
+#      elsif user.staff_member?
+#        can :manage, Charge
+#        cannot :read, :admin
       else
         can :read, :all
         cannot :read, :admin
