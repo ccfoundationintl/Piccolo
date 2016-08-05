@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title=@title
+    %title=APP_CONFIG['sitename']
     = stylesheet_link_tag('application', media: 'all', 'data-turbolinks-track' => true)
     = javascript_include_tag('application', 'data-turbolinks-track' => true)
     = csrf_meta_tags
@@ -18,7 +18,7 @@
       %meta{:content => "#{root_url}images/app_icon_fb.jpg", :property => "og:image:url"}/
       %meta{:content => "#{root_url}images/app_icon_fb.jpg", :property => "og:image"}/
       %meta{:content => "#{request.original_url}", :property => "og:url"}/
-      %meta{:content => "Wake ‘N Shake is a 12-hour dance marathon held every spring at Wake Forest University, benefiting the Brian Piccolo Cancer Research Fund. For 12-hours, students, alumni, and faculty members come together to stay standing in support of all those affected by cancer, asking for donations in support of their participation.", :property => "og:description"}/
+      %meta{:content => "#{APP_CONFIG['site_description']}", :property => "og:description"}/
 
     %script{:src => "https://use.typekit.net/mff8khh.js"}
     :javascript
@@ -31,37 +31,37 @@
             %i.fa.fa-bars
           .collapse.navbar-collapse#navbar-full
             %ul.nav.navbar-nav
-              %li= link_to("Wake 'N Shake", root_path, class: "navbar-brand")
+              %li= link_to(APP_CONFIG['sitename'], root_path, class: "navbar-brand")
               %li.divider-vertical.hidden-xs
               %br.visible-xs
               %br.visible-xs
               %li.dropdown
                 %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"} About Us
                 %ul.dropdown-menu
-                  %li= link_to("Our Mission")
-                  %li= link_to("Committee")
+                  %li= link_to("Our Mission", { controller: '/about', action: :index })
+                  %li= link_to("Committee", { controller: '/about', action: :committee } )
                   %li= link_to("Our History")
               %li= link_to("Champions")
-              %li= link_to("Donate")
-              %li= link_to("Dancers")
-              %li= link_to("Teams")
-              %li= link_to("Our Sponsors")
+              %li= link_to("Donate", donations_path)
+              %li= link_to(APP_CONFIG['participant_type'].pluralize(2), users_path)
+              %li= link_to("Teams", teams_path)
+              %li= link_to("Our Sponsors", sponsors_path)
             %ul.nav.navbar-nav.navbar-right
               %li.divider-vertical.hidden-xs
               - if can? :manage, :all
                 %li
                   = link_to controller: "/admin", action: :index do
                     %i.fa.fa-key.text-warning
-              - if dancer_signed_in?
+              - if user_signed_in?
                 %li
-                  = link_to("Profile", dancer_path(current_dancer))
+                  = link_to("Profile", user_path(current_user))
                 %li
-                  %p.navbar-btn= link_to("Logout", destroy_dancer_session_path, method: :delete, class: "btn btn-sign-up")
+                  %p.navbar-btn= link_to("Logout", destroy_user_session_path, method: :delete, class: "btn btn-sign-up")
               - else
                 %li
-                  = link_to("Log In", new_dancer_session_path)
+                  = link_to("Log In", new_user_session_path)
                 %li
-                  %p.navbar-btn= link_to("Sign Up", new_dancer_registration_path, class: "btn btn-sign-up")
+                  %p.navbar-btn= link_to("Sign Up", new_user_registration_path, class: "btn btn-sign-up")
     = yield
   %br
   %br
@@ -73,27 +73,34 @@
           %h5 Get to know us
           %ul.list-unstyled
             %li
-              %a{href: "https://twitter.com/wfuwakenshake"}Twitter
+              .fa.fa-icon.fa-twitter
+              %a{href: "#{APP_CONFIG['twitter']}"}Twitter
             %li
-              %a{href: "http://instagram.com/wfuwakenshake"}Instagram
+              .fa.fa-icon.fa-instagram
+              %a{href: "#{APP_CONFIG['instagram']}"}Instagram
             %li
-              %a{href: "https://www.facebook.com/wfuWakeNShake"}Facebook
+              .fa.fa-icon.fa-facebook
+              %a{href: "#{APP_CONFIG['facebook']}"}Facebook
             %li
-              %a{href:"http://www.youtube.com/wfuwakenshake"}YouTube
+              .fa.fa-icon.fa-youtube
+              %a{href: "#{APP_CONFIG['youtube']}"}YouTube
         .col-md-4
           %h5 Contact information
           %address
             %strong Wake 'N Shake
             %br
-            c/o Pro Humanitate Institute
+            = APP_CONFIG['address_line_1']
             %br
-            Campus Box 7526
+            = APP_CONFIG['address_line_2']
             %br
-            1834 Wake Forest Rd.
+            = APP_CONFIG['city']
+            ,
+            = APP_CONFIG['state']
+            = APP_CONFIG['zip_code']
             %br
-            Winston-Salem, NC 27109
-            %br
-            %a{href: "mailto:wns@wfu.edu"}Email Us
+            %p
+              .fa.fa-icon.fa-envelope
+              %a{href: "mailto:#{APP_CONFIG['email']}"}Email Us
         .col-md-4
           %h5 Our partners
           %ul.list-unstyled
@@ -103,7 +110,11 @@
               %a{href: "http://www.wakehealth.edu/Comprehensive-Cancer-Center/"}WFBMC Comprehensive Cancer Center
             %li
               %a{href: "http://philanthropy.campuslife.wfu.edu/brian-piccolo-cancer-fund-drive/"}Brian Piccolo Cancer Research Fund
-          %p 
-            This website was built by 
-            %a{href: "http://thedemon.io"}Demon.io
-          %br
+          %p
+            %br
+            This website was built by
+            %br
+            %a{ href: "http://www.thedemon.io"}
+              %img{src: "/demon-io.svg", width: "225"}
+            %br
+            %br

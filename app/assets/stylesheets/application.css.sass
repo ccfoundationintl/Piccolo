@@ -1,0 +1,123 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "font-awesome"
+@import "welcome"
+
+body
+  font-family: "Proxima Nova", Helvetica, Arial, sans-serif !important
+
+.jumbotron
+  overflow: hidden
+
+// Navigation
+.navbar-inverse
+  background: #333
+  border-color: #444
+
+.nav li a
+  color: #FFF
+  text-transform: uppercase
+  font-size: 12px
+
+.label
+  color: #333
+
+.navbar-inverse .navbar-nav li a
+  color: #FFF
+
+.navbar-inverse .navbar-brand
+  font-weight: medium
+  text-transform: none
+  font-size: 18px
+
+.navbar-inverse .navbar-toggle
+  color: #FFF
+  border-color: #FFF
+
+.dropdown:hover .dropdown-menu, .dropdown-menu li a:hover
+  display: block
+  background: #000
+
+.navbar .divider-vertical
+  height: 50px
+  margin: 0 9px
+  border-right: 1px solid #ffffff
+  border-left: 1px solid #f2f2f2
+
+.navbar-inverse .divider-vertical
+  border-right-color: #444444
+  border-left-color: #111111
+
+// Footer
+#footer
+  background: #333
+  color: #FFF
+  padding-top: 10px
+  margin-bottom: 30px
+
+#footer a
+  color: #777
+
+#footer a:hover
+  text-decoration: none
+  color: #FFF
+
+a .thumbnail:hover
+  background-color: #F2F2F2
+  text-decoration: none !important
+
+.thumbnail-fixed-height
+  height: 250px
+
+.profile-spaced
+  display: inline-block
+  overflow: hidden
+  width: 100%
+  height: 130px
+  background-size: cover
+  background-position: 50%
+
+.no-underline:hover
+  text-decoration: none !important
+
+.btn-primary
+  background: #369ff4
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary.active
+  background: #70bbf7
+
+.input-group .form-control:not(:first-child):not(:last-child)
+  border-radius: 5px
+.image-spaced 
+  height: 150px
+  display: inline-block
+  overflow: hidden
+  width: 100%
+  display: flex
+  align-items: center
+
+
+.img 
+  vertical-align: middle
+
+.progress-bar[aria-valuenow="1"],
+.progress-bar[aria-valuenow="2"] 
+  min-width: 3%
+
+
+.progress-bar[aria-valuenow="0"] 
+  color: #222
+  min-width: 3%
+  background: transparent
+  box-shadow: none
+
+
+.progress-bar[aria-valuenow^="9"]:not([aria-valuenow="9"]) 
+  background: #70bbf7
+  max-width: 100%
+
+
+.progess-bar 
+  max-width: 100%
+  background-color: #70bbf7
+  background-image: none
