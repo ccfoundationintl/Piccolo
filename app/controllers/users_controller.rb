@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if params[:search]
       @users = User.search(params[:search])
     else
-      @top_6_users = User.joins(:donations).where('donations.is_donation=true').select('users.id, avatar_file_name, stafftitle, first_name, last_name, sum(donations.amount) as total_raised').group('users.id').order('total_raised desc').limit(6)
+      @top_6_users = User.joins(:donations).where('donations.is_donation=true').select('users.id, avatar_file_name, first_name, last_name, sum(donations.amount) as total_raised').group('users.id').order('total_raised desc').limit(6)
 
       @users = User.all.order(last_name: :asc)
       respond_to do |format|
