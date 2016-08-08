@@ -4,7 +4,11 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    if params[:search]
+      @divisions = Division.teams.all
+    else
+      @divisions = Division.teams.all
+    end
   end
 
   # GET /teams/1
