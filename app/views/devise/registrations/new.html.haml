@@ -1,21 +1,150 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.container
+  %br
+  %h1.text-center Sign Up
+  %p.lead.text-center.text-muted You're about to join hundreds of incredible users.
+  %br
+  .row
+    .col-md-3
+    .col-md-6
+      - if @user.errors.any?
+        .alert.alert-danger
+          %h4.text-center.text-danger Errors with registration
+          %p There were errors with your registration. Please fix the following:
+          - @user.errors.messages.values.each do |msg|
+            - msg.each do |error|
+              %li= error
+      .well
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          - devise_error_messages!
+          .row
+            .form-group
+              =f.label :first_name, class: "label"
+              = f.text_field(:first_name, autofocus: true, id: "first_name", class: "form-control", placeholder: "Enter your first name")
+            .form-group
+              =f.label :last_name, class: "label"
+              = f.text_field(:last_name, id: "last_name", class: "form-control", placeholder: "Enter your last name")
+            .form-group
+              =f.label :email, class: "label"
+              = f.email_field(:email, id: "email", class: "form-control", autocomplete: "off", placeholder: "Enter your email")
+            .form-group
+              =f.label :password, class: "label"
+              %be
+              %small.text-muted Passwords must contain an uppercase letter, lowercase letter, digit, and a special character
+              = f.password_field(:password, id: "password", class: "form-control", autocomplete: "off", placeholder: "Enter a new password")
+            %hr
+            %h4.text-center
+              .fa.fa-user.text-primary
+              General Information
+            .form-group
+              .label Sex
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  .fa.fa-male
+                  Male
+                  = f.radio_button :gender, "Male"
+                .btn.btn-primary.btn-sm
+                  .fa.fa-female
+                  Female
+                  = f.radio_button :gender, "Female"
+            .form-group
+              .label 
+                Team
+                %span.text-muted (Optional)
+              %br
+              =f.collection_select :team_id, @teams, :id, :name, {prompt: "Select a team to join"}, {class: "form-control"}
+              = f.fields_for :team, resource.build_team do |t|
+                .field
+                  = t.label :team, "or create a new team", class: "label"
+                  = t.text_field :name, class: "form-control", placeholder: "Enter a team name"
+                  = t.hidden_field :category, value: "Open"
+                  = t.hidden_field :amount_raised, value: 0
+            .form-group
+              .label T-Shirt Size
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  Small
+                  = f.radio_button :tshirt, "Small"
+                .btn.btn-primary.btn-sm
+                  Medium
+                  = f.radio_button :tshirt, "Medium"
+                .btn.btn-primary.btn-sm
+                  Large
+                  = f.radio_button :tshirt, "Large"
+                .btn.btn-primary.btn-sm
+                  X-Large
+                  = f.radio_button :tshirt, "X-Large"
+            .form-group
+              .label What is your goal to raise?
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  $500
+                  = f.radio_button :goal, 500
+                .btn.btn-primary.btn-sm
+                  $1,000
+                  = f.radio_button :goal, 1000
+                .btn.btn-primary.btn-sm
+                  $2,000
+                  = f.radio_button :goal, 2000
+                .btn.btn-primary.btn-sm
+                  $5,000
+                  = f.radio_button :goal, 5000
+            %br
+            %hr
+            %h4.text-center
+              .fa.fa-heartbeat.text-danger
+              Safety & Medical Information
+            .form-group
+              =f.label :contact_name, class: "label"
+              =f.text_field :contact_name, class: "form-control", placeholder: "Enter an emergency contact name"
+            .form-group
+              =f.label :contact_number, class: "label"
+              =f.text_field :contact_number, class: "form-control", placeholder: "Enter an emergency contact number"
+            / .form-group
+            /   =f.label :conditional_details, class: "label"
+            /   %br
+            /   %em.text-muted.small During Wake 'N Shake, each participant is expected to be on his or her feet for twelve hours (or, if qualified, a six hour shift). With this in mind, do you have any medical conditions we should be aware of? ex. asthma, allergies, illness, medications, etc.
+            /   = f.text_area :conditional_details, class: "form-control", placeholder: "Enter conditional details here if needed", rows: 5
+            .form-group
+              =f.label :food_allergies, class: "label"
+              =f.text_area :food_allergies, class: "form-control", placeholder: "Enter any food allergies here"
+            .form-group
+              .label Vegetarian
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  Yes
+                  = f.radio_button :vegetarian, true
+                .btn.btn-primary.btn-sm
+                  No
+                  = f.radio_button :vegetarian, false
+            .form-group
+              %p I understand that I will be dancing for 12 hours.
+              = f.check_box :disclaimer
+              = f.label :disclaimer, "I agree"
+          %hr
+          %h4.text-center
+            .fa.fa-heart-o.text-warning
+            Donation Information
+          %em.text-muted.small Please submit the contact information of friends or family members. They will automatically be sent an email telling them about Wake 'N Shake and your participation in the event, and asking if they would be willing to support you by donating to the Brian Piccolo Cancer Research Fund on your behalf.
+          %h5.text-center Required
+          - 5.times do |i|
+            = f.fields_for :referrals, resource.referrals.build do |r|
+              %label.label= "Contact #{i+1}"
+              %p= r.text_field :name, placeholder: "Enter name", class: "form-control"
+              %p= r.text_field :email, placeholder: "Enter email address", class: "form-control"
+            %hr
+          %h5.text-center Optional
+          - 5.times do |i|
+            = f.fields_for :referrals, resource.referrals.build do |r|
+              %label.label= "Contact #{i+1}"
+              %p= r.text_field :name, placeholder: "Enter name", class: "form-control"
+              %p= r.text_field :email, placeholder: "Enter email address", class: "form-control"
+            %hr
+          .actions
+            = button_tag(type: 'submit', class: "btn btn-success btn-md btn-block") do
+              .fa.fa-check-circle-o
+              Register and pay
+  .col-md-3
