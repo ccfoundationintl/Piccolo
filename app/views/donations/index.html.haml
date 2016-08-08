@@ -93,9 +93,9 @@
     .col-md-6
       .well
         %h3 Send in donations by mail
-        %p We also accept cash or check donations! Checks can be made out to the Brian Piccolo Cancer Research Fund. If you would like this amount to be credited to a specific dancer, organization, or department, simply include a note with that information in the envelope. All donations can be sent to:
+        %p= "We also accept cash or check donations! Checks can be made out to the Brian Piccolo Cancer Research Fund. If you would like this amount to be credited to a specific #{APP_CONFIG['participant_type']}, organization, or department, simply include a note with that information in the envelope. All donations can be sent to:"
         %address
-          %strong Brian Piccolo Cancer Fund
+          %strong Brian Piccolo Cancer Research Fund
           %br
           Wake Forest University
           %br

@@ -1,2 +1,14 @@
-%h1 About#index
-%p Find me in app/views/about/index.html.erb
+.container
+  %h1.page-header.text-center
+    About
+    = APP_CONFIG['sitename']
+  .row
+    .col-md-6
+      %p= APP_CONFIG['about_event']
+      
+      %br
+      .text-center
+        %p= link_to("Help us reach our goal", donations_path, class: "btn btn-primary btn-lg btn-block")
+
+    .col-md-6
+      =image_tag("/about.jpg", class: "img-responsive")

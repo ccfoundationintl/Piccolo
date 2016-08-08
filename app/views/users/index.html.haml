@@ -1,13 +1,13 @@
 .container
   .page-header.text-center
     %h1
-      = APP_CONFIG['participant_type']
+      = APP_CONFIG['participant_type'].pluralize(2).capitalize
   - if params[:search].nil?
     .row
       %h3
         %i.fa.fa-star.text-warning
         Top 6
-        = APP_CONFIG['participant_type'].pluralize(2)
+        = APP_CONFIG['participant_type'].pluralize(2).capitalize
       = render partial: "profiles", locals: {object: @top_6_users}
     %hr
   .row
