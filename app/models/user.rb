@@ -44,8 +44,8 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 8, too_short: "Your password must have at least 8 characters"}, on: :update, allow_blank: true
   validates :first_name, presence: {message: "Your first name cannot be blank"}
   validates :last_name, presence: {message: "Your last name cannot be blank"}
-  validates :year, presence: {message: "Indicate your year"}
-  validates :goal, presence: {message: "Set your fundraising goal"}
+  validates :class_year, presence: {message: "Indicate your year"}
+  validates :raise_goal, presence: {message: "Set your fundraising goal"}
   validates :gender, presence: {message: "Indicate your gender"}
   validates :tshirt, presence: {message: "Select your t-shirt size"}
 
