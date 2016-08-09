@@ -102,28 +102,6 @@
             .form-group
               =f.label :contact_number, class: "label"
               =f.text_field :contact_number, class: "form-control", placeholder: "Enter an emergency contact number"
-            / .form-group
-            /   =f.label :conditional_details, class: "label"
-            /   %br
-            /   %em.text-muted.small During Wake 'N Shake, each participant is expected to be on his or her feet for twelve hours (or, if qualified, a six hour shift). With this in mind, do you have any medical conditions we should be aware of? ex. asthma, allergies, illness, medications, etc.
-            /   = f.text_area :conditional_details, class: "form-control", placeholder: "Enter conditional details here if needed", rows: 5
-            .form-group
-              =f.label :food_allergies, class: "label"
-              =f.text_area :food_allergies, class: "form-control", placeholder: "Enter any food allergies here"
-            .form-group
-              .label Vegetarian
-              %br
-              .btn-group{data:{toggle: "buttons"}}
-                .btn.btn-primary.btn-sm
-                  Yes
-                  = f.radio_button :vegetarian, true
-                .btn.btn-primary.btn-sm
-                  No
-                  = f.radio_button :vegetarian, false
-            .form-group
-              %p I understand that I will be dancing for 12 hours.
-              = f.check_box :disclaimer
-              = f.label :disclaimer, "I agree"
           %hr
           %h4.text-center
             .fa.fa-heart-o.text-warning
