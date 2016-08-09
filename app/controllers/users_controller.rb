@@ -24,11 +24,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @amount_raised_goal = (@user.charges.where(is_donation: true).sum(:amount)/@user.goal)*100
-    @donations = @user.charges.where(is_donation: true).order('created_at desc')
+    @amount_raised_goal = (@user.donations.where(is_donation: true).sum(:amount)/@user.raise_goal)*100
+    @donations = @user.donations.where(is_donation: true).order('created_at desc')
     @charge = Donation.new
     @charge_record = Donation.new
-    @registration_fee = @user.charges.where(is_registration_fee: true).empty?
+    @registration_fee = @user.donations.where(is_registration_fee: true).empty?
   end
 
   # GET /users/new
