@@ -26,6 +26,14 @@ You will then be able to start the server by running:
 $ rails server
 ```
 
+## Development Seed Data
+
+If you need some initial data to develop the application with, run:
+```
+$ rake db:seed
+```
+It will generate demo users, teams, and donations.
+
 ## Configuration
 
 The beauty of this template is that you are able to customize everything about it. To customize all the variables, edit the `config.yml` file found in the root directory of this project. In there are all the configuration variables used to customize the site.
