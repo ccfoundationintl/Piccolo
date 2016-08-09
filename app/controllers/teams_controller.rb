@@ -5,9 +5,9 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     if params[:search]
-      @divisions = Division.teams.all
+      @divisions = Division.all
     else
-      @divisions = Division.teams.all
+      @divisions = Division.all
     end
   end
 
