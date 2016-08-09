@@ -7,9 +7,9 @@ after "development:users" do
 
   User.all.each do |user|
     rand(7..10).times do
-      user.charges.where(
+      user.donations.where(
         amount: rand(20..100),
-        email: "#{first_name_array.sample}@gmail.com",
+        donor_email: "#{first_name_array.sample}@gmail.com",
         is_donation: true
       ).first_or_create!
     end
@@ -17,9 +17,9 @@ after "development:users" do
 
   Team.all.each do |team|
     rand(10..15).times do
-      team.charges.where(
+      team.donations.where(
         amount: rand(20..100),
-        email: "#{first_name_array.sample}@gmail.com",
+        donor_email: "#{first_name_array.sample}@gmail.com",
         is_donation: true
       ).first_or_create!
     end
