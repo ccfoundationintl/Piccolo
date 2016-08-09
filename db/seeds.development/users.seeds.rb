@@ -1,5 +1,5 @@
 after "development:teams" do
-  
+
   puts "Seeding Users..."
 
   # tshirt sizes
