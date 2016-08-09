@@ -1,58 +1,59 @@
-.jumbotron
-  .container.text-center
-    %br
-    %h2
-      Support our
-      = APP_CONFIG['participant_type'].pluralize(2)
-    %p 100% of your donations goes to cancer research
-    .row
-      .col-md-4.col-md-offset-4
-        .well.well-clear
-          = form_for :charge do
-            .form-inline
-              .form-group
-                .input-group
-                  %span.pre-input $
-                  = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off", value: 10
-                  %span.post-input USD
-                %br
-                %br
-                %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
-                  %b Give by  
-                  %i.fa.fa-1x.fa-credit-card
-                %span.action
-                  :javascript
-                    var handler = StripeCheckout.configure({
-                      key: "#{Rails.configuration.stripe[:publishable_key]}",
-                      locale: 'auto',
-                      token: function(token) {
-                        var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
-                        var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
-                        var is_donation = $("<input type=hidden name=is_donation value=true />")
-                        var charge_type = $("<input type=hidden name=charge_type value=All />")
-                        $("form").append(tokenInput).append(emailInput).append(is_donation).append(charge_type).submit();
-                      }
-                    });
+#bg
+  .jumbotron
+    .container.text-center
+      %br
+      %h2
+        Support our
+        = APP_CONFIG['participant_type'].pluralize(2)
+      %p 100% of your donations goes to cancer research
+      .row
+        .col-md-4.col-md-offset-4
+          .well.well-clear
+            = form_for :charge do
+              .form-inline
+                .form-group
+                  .input-group
+                    %span.pre-input $
+                    = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off", value: 10
+                    %span.post-input USD
+                  %br
+                  %br
+                  %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
+                    %b Give by  
+                    %i.fa.fa-1x.fa-credit-card
+                  %span.action
+                    :javascript
+                      var handler = StripeCheckout.configure({
+                        key: "#{Rails.configuration.stripe[:publishable_key]}",
+                        locale: 'auto',
+                        token: function(token) {
+                          var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
+                          var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
+                          var is_donation = $("<input type=hidden name=is_donation value=true />")
+                          var charge_type = $("<input type=hidden name=charge_type value=All />")
+                          $("form").append(tokenInput).append(emailInput).append(is_donation).append(charge_type).submit();
+                        }
+                      });
 
-                    $('#stripeButton').on('click', function(e) {
-                      var amount = $("#total-amount-val").val();
-                      if(amount > 0) {
-                        handler.open({
-                          name: "#{APP_CONFIG['charity_name']}",
-                          image: "/images/app_icon.png",
-                          description: "#{APP_CONFIG['donation_tagline']}",
-                          amount: amount*100,
-                          billingAddress: true
-                        });
-                      }
-                      e.preventDefault();
-                    });
+                      $('#stripeButton').on('click', function(e) {
+                        var amount = $("#total-amount-val").val();
+                        if(amount > 0) {
+                          handler.open({
+                            name: "#{APP_CONFIG['charity_name']}",
+                            image: "/images/app_icon.png",
+                            description: "#{APP_CONFIG['donation_tagline']}",
+                            amount: amount*100,
+                            billingAddress: true
+                          });
+                        }
+                        e.preventDefault();
+                      });
 
-                    // Close Checkout on page navigation
-                    $(window).on('popstate', function() {
-                      handler.close();
-                    });
-        = link_to "or become a #{APP_CONFIG['participant_type']}", new_user_registration_path, class: "btn btn-md btn-default btn-sign-up"
+                      // Close Checkout on page navigation
+                      $(window).on('popstate', function() {
+                        handler.close();
+                      });
+          = link_to "or become a #{APP_CONFIG['participant_type']}", new_user_registration_path, class: "btn btn-md btn-default btn-sign-up"
 .container
   .row
     .col-md-10.col-md-offset-1.text-center
