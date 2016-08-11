@@ -2,11 +2,12 @@
 #
 # Table name: teams
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  division_id :integer
+#  id            :integer          not null, primary key
+#  name          :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  division_id   :integer
+#  amount_raised :integer
 #
 
 class Team < ActiveRecord::Base
