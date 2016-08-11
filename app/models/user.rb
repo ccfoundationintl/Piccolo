@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
 
   belongs_to :team
   has_many :donations, as: :donated
+  has_many :referrals
 
   validates :email, presence: {message: "Your email cannot be blank"}, uniqueness: {message: "This email address is already being used"}
   validates :password, presence: {message: "Your password cannot be blank"}, length: {minimum: 8, too_short: "Your password must have at least 8 characters"}, on: :create
