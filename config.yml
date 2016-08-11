@@ -6,21 +6,21 @@
 defaults: &defaults
 
   # General Site Information
-  sitename: Example Event
+  sitename: Hit The Bricks • DC
   site_description: Example Event is an event at Example University founded to raise money for Example Charity.
 
   # University Information
-  university: Example University
-  univeristy_url: www.exampleuniversity.com
-  university_location: Example City, EX
+  university: Wake Forest University
+  univeristy_url: www.wfu.edu
+  university_location: Winston Salemn, NC
 
   # Donation Information
-  charity_name: Example Charity
+  charity_name: Brian Piccolo Cancer Research Fund
   donation_tagline: Support our participants
 
   # Event Information
   datetime_of_event: 120349563
-  location_of_event: Example Location
+  location_of_event: Washington Memorial
   about_event: Example Event was started in 2015 to support the Brian Piccolo Cancer Research foundation. (ect ect ect)
 
   # Event Participants (dancers, runners, ect.)
@@ -39,7 +39,7 @@ defaults: &defaults
   instagram: http://www.instagram.com/example
   youtube: http://www.youtube.com/example
 
-development:
+development
   <<: *defaults
 
 production:
