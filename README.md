@@ -71,6 +71,13 @@ We use a series of API integrations to make our application run smoothly. Be sur
   * [Heroku](http://www.heroku.com) App hosting sever
   * [Google Analytics](http://analytics.google.com) User tracking and analytics
 
+## Production Variables
+The follow environment variables need to be set for production (in the Heroku instance):
+  * AWS_ACCESS_KEY_ID - The access key for your AWS S3 bucket account
+  * AWS_SECRET_ACCESS_KEY - The secret key for your AWS S3 bucket account
+  * GA-KEY - The unique identifier for your Google Analytics profile
+  * S3_BUCKET_NAME - The name of your S3 bucket where you will be storing your static assets
+
 ## License
 
 This project is licensed under the MIT license. It is truly for educational purposes.
