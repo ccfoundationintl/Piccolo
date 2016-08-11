@@ -39,7 +39,7 @@ defaults: &defaults
   instagram: http://www.instagram.com/example
   youtube: http://www.youtube.com/example
 
-development
+development:
   <<: *defaults
 
 production:
