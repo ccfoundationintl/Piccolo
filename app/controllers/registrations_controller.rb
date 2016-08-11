@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
-    '/charges/registration_fee'
+    '/donations/registration_fee'
   end
 
   def new
@@ -35,10 +35,10 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :year, :tshirt, :avatar, :team, :residence, :dancing_for, :first_time, :team_id, :shift, :conditional_details, :food_allergies, :goal, :dorm_id, :contact_name, :contact_number, :disclaimer, :vegetarian, referrals_attributes: [:name, :email], team_attributes: [:name, :category, :amount_raised])
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :year, :tshirt, :avatar, :team, :team_id, :raise_goal, :contact_name, :contact_number, referrals_attributes: [:name, :email], team_attributes: [:name, :category, :amount_raised])
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :year, :tshirt, :avatar, :team, :residence, :dancing_for, :first_time, :team_id, :shift, :conditional_details, :food_allergies, :goal, :dorm_id, :vegetarian, team_attributes: [:name, :category])
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :year, :tshirt, :avatar, :team, :team_id, :raise_goal, team_attributes: [:name, :category])
   end
 end
