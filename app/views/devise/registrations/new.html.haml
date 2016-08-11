@@ -1,7 +1,7 @@
 .container
   %br
   %h1.text-center Sign Up
-  %p.lead.text-center.text-muted You're about to join hundreds of incredible users.
+  %p.lead.text-center.text-muted= "You're about to join hundreds of incredible #{APP_CONFIG['participant_type'].pluralize(2)}."
   %br
   .row
     .col-md-3
