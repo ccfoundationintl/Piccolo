@@ -5,9 +5,9 @@ The Piccolo template is a Ruby on Rails web app template that allows charity org
 
 ## Branches
 Each charity event gets its own branch with its customizations. All the branches inherit from the master branch a base code. Anything additional specific to a certain event such as configuration variables or styling is done in that event's branch. Below are the following active branches:
-  * Hit The Bricks • DC - The Washington, DC version of Hit The Bricks for Wake Forest University alumni.
-  * Hit The Bricks • WFU - The Wake Forest version of Hit The Bricks for the on-campus event.
-  * Wake 'N Shake - The dance marathon that occurs at Wake Forest University to raise money for the Brian Piccolo Cancer Research Fund.
+  * `Hit The Bricks • DC` - The Washington, DC version of Hit The Bricks for Wake Forest University alumni.
+  * `Hit The Bricks • WFU` - The Wake Forest version of Hit The Bricks for the on-campus event.
+  * `Wake 'N Shake` - The dance marathon that occurs at Wake Forest University to raise money for the Brian Piccolo Cancer Research Fund.
 
 ## Start
 
