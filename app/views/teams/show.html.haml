@@ -1,7 +1,134 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @team.name
-= link_to 'Edit', edit_team_path(@team)
-|
-= link_to 'Back', teams_path
+- content_for :head do
+  %meta{:content => "#{@team.name}'s Campaign", :property => "og:title"}/
+  %meta{:content => "Support #{@team.name}'s campaign! #{APP_CONFIG['site_description']}", :property => "og:description"}/
+  %meta{:content => "#{root_url}/images/app_icon_fb.jpg", :property => "og:image"}/
+  %meta{:content => "#{root_url}/images/app_icon_fb.jpg", :property => "og:image:url"}/
+  %meta{:content => "#{request.original_url}", :property => "og:url"}/
+
+.container
+  .row
+    .col-md-9
+      %h1
+        = @team.name
+        - if can? :manage, :all
+          = link_to('Edit', edit_team_path(@team), class: "btn btn-default btn-md")
+          = link_to('Delete team', @team, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-md")
+      .panel.panel-default.panel-body
+        %h4
+          = @team.name
+          has raised 
+          %span.text-success= number_to_currency(@team.amount_raised)
+        .progress
+          .progress-bar.progress-bar-success.progress-bar-striped{:role => "progressbar", :style => "width: #{number_to_percentage(@amount_raised_goal, precision: 0)}", "aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "#{@amount_raised_goal}"}
+            =number_to_percentage(@amount_raised_goal, precision: 0)
+        %hr
+        %p.text-muted
+          Send a donation to 
+          = @team.name
+          to help their campaign!
+        = form_for @charge do
+          .form-inline
+            .form-group
+              .input-group
+                %span.pre-input $
+                = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off", value: 10
+                %span.post-input USD
+              %br
+              %br
+              %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
+                %b Give by  
+                %i.fa.fa-1x.fa-credit-card
+              %span.action
+                :javascript
+                  var handler = StripeCheckout.configure({
+                    key: "#{Rails.configuration.stripe[:publishable_key]}",
+                    locale: 'auto',
+                    token: function(token) {
+                      var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
+                      var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
+                      var is_donation = $("<input type=hidden name=is_donation value=true />")
+                      var charge_type = $("<input type=hidden name=charge_type value=Team />")
+                      var team_id = $("<input type=hidden name=team_id value=#{@team.id} />")
+
+                      $("form").append(tokenInput).append(emailInput).append(is_donation).append(charge_type).append(team_id).submit();
+                    }
+                  });
+
+                  $('#stripeButton').on('click', function(e) {
+                    var amount = $("#total-amount-val").val();
+                    if(amount > 0) {
+                      handler.open({
+                      name: "Wake 'N Shake",
+                      image: "/images/app_icon.png",
+                      description: "100% funds cancer research",
+                      amount: amount*100,
+                      billingAddress: true
+                      });
+                    }
+                    e.preventDefault();
+                  });
+
+                  // Close Checkout on page navigation
+                  $(window).on('popstate', function() {
+                    handler.close();
+                  });
+    .col-md-3
+      %br
+      %br
+      %br
+      .small.text-muted Share this team page
+      %a.no-underline.icon-facebook{:href => "http://www.facebook.com/", :onclick => "popUp=window.open('http://www.facebook.com/sharer.php?u=#{request.original_url}','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false", :rel => "nofollow"}
+        %i.fa.fa-2x.fa-facebook-square
+      %a.no-underline.icon-twitter{:href => "http://twitter.com/", :onclick => "popUp=window.open('http://twitter.com/intent/tweet?text=\\'Support #{@team.name}'s Campaign\\' - #{request.original_url}','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus();return false", :rel => "nofollow"}
+        %i.fa.fa-2x.fa-twitter-square
+      %a.no-underline.icon-gplus{:href => "http://www.plus.google.com/", :onclick => "popUp=window.open('https://plus.google.com/share?url=#{request.original_url}','popupwindow','scrollbars=yes,width=800,height=400');popUp.focus(); return false", :rel => "nofollow"}
+        %i.fa.fa-2x.fa-google-plus-square
+      %a.no-underline.icon-email{:href => "mailto:?subject=Support #{@team.name}'s Campaign &body=URL: #{request.original_url}", :rel => "nofollow"}
+        %i.fa.fa-2x.fa-share-square
+
+
+  .row
+    .col-md-12
+      %h3= APP_CONFIG['participant_type'].pluralize(2).capitalize
+      = render partial: "/users/profiles", locals: {object: @users}
+  .row
+    .col-md-9
+      %h4.page-header Recent Activity
+      - @donations.each do |donation|
+        - donor = User.where(email: donation.donor_email).first
+        .panel.panel-default.panel-body
+          .row
+            - if donor.present?
+              .col-md-1
+                = image_tag(donor.avatar.url(:thumb), class: "img-rounded", size: "40")
+            .col-md-8
+              - if donor.present?
+                = donor.first_name
+                donated
+                %span.text-success
+                  =number_to_currency(donation.amount)
+                to
+                =@team.name
+              - else
+                = @team.name
+                received a
+                %span.text-success
+                  =number_to_currency(donation.amount)
+                donation
+            .col-md-3
+              %span.text-muted.small.pull-right
+                = time_ago_in_words(donation.created_at)
+                ago
+    .col-md-3
+      - if can? :manage, Donation
+        %h4.page-header Donations
+        = form_for @charge_record do |f|
+          = f.label :amount, class: "label"
+          = f.text_field :amount, placeholder: "Enter amount", class: "form-control"
+          = f.label :email, class: "label"
+          = f.text_field :email, placeholder: "Email of donor", class: "form-control"
+          = f.hidden_field :is_donation, value: true
+          = f.hidden_field :charged_type, value: "Team"
+          = f.hidden_field :charged_id, value: @team.id
+          = f.submit "Save", class: "btn btn-success btn-block btn-md"
+
