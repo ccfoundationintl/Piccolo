@@ -53,6 +53,15 @@ $ git push origin heroku
 ```
 Heroku will deploy the new version and it will be live.
 
+## Tasks
+
+When the site is live, it will be a good idea to use Heroku's Scheduler add-on to automate tasks that need to be run in the background. These tasks include sending emails, sending weekly updates about teams, and tallying up donation amounts.
+
+Here are the following tasks that can be found in `lib/tasks/`:
+  * :send_emails - Sends an email every week updating every participant on the status of their donation efforts. Includes information such as how much they have raised and who the top participants and teams are.
+  * :update_team_donations - Updates the totals of donations for all the teams. Choose how often you would like to run this task since it is an expensive one.
+  * :check_registration_payments - Goes through every user and checks whether they have paid their registration fees or not. If not, it sends them a reminder email to pay their registration fees.
+
 ## API Integrations
 
 We use a series of API integrations to make our application run smoothly. Be sure to have an account set up with the following services and their APIs:
