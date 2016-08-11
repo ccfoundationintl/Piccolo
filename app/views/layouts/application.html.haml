@@ -14,7 +14,7 @@
     - if content_for?(:head)
       = content_for(:head)
     - else
-      %meta{:content => "Wake 'N Shake Dance Marathon", :property => "og:title"}/
+      %meta{:content => "#{APP_CONFIG['sitename']}", :property => "og:title"}/
       %meta{:content => "#{root_url}images/app_icon_fb.jpg", :property => "og:image:url"}/
       %meta{:content => "#{root_url}images/app_icon_fb.jpg", :property => "og:image"}/
       %meta{:content => "#{request.original_url}", :property => "og:url"}/
@@ -35,12 +35,7 @@
               %li.divider-vertical.hidden-xs
               %br.visible-xs
               %br.visible-xs
-              %li.dropdown
-                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"} About Us
-                %ul.dropdown-menu
-                  %li= link_to("Our Mission", { controller: '/about', action: :index })
-                  %li= link_to("Committee", { controller: '/about', action: :committee } )
-                  %li= link_to("Our History")
+              %li= link_to("About Us", { controller: '/about', action: :index })
               %li= link_to("Donate", donations_path)
               %li= link_to(APP_CONFIG['participant_type'].pluralize(2), users_path)
               %li= link_to("Teams", teams_path)
@@ -87,7 +82,7 @@
         .col-md-4
           %h5 Contact information
           %address
-            %strong Wake 'N Shake
+            %strong= APP_CONFIG['sitename']
             %br
             = APP_CONFIG['address_line_1']
             %br
