@@ -20,11 +20,15 @@ defaults: &defaults
 
   # Event Information
   datetime_of_event: 120349563
-  location_of_event: Washington Memorial
+  registration_fee_amount: 20
+  location_of_event: Example Location
   about_event: Example Event was started in 2015 to support the Brian Piccolo Cancer Research foundation. (ect ect ect)
 
   # Event Participants (dancers, runners, ect.)
   participant_type: runner
+
+  # Emails
+  donation_message: Donate to our event!
 
   # Contact Information
   address_line_1: 123 Example St.

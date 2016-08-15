@@ -3,6 +3,12 @@
 
 The Piccolo template is a Ruby on Rails web app template that allows charity organizations to develop websites where they can easily raise money for their events.
 
+## Branches
+Each charity event gets its own branch with its customizations. All the branches inherit from the master branch a base code. Anything additional specific to a certain event such as configuration variables or styling is done in that event's branch. Below are the following active branches:
+  * `Hit The Bricks • DC` - The Washington, DC version of Hit The Bricks for Wake Forest University alumni.
+  * `Hit The Bricks • WFU` - The Wake Forest version of Hit The Bricks for the on-campus event.
+  * `Wake 'N Shake` - The dance marathon that occurs at Wake Forest University to raise money for the Brian Piccolo Cancer Research Fund.
+
 ## Start
 
 To use this template, make sure you have [Ruby on Rails](http://rubyonrails.org/) and [Heroku Toolbelt](https://toolbelt.heroku.com/) installed on your development machine.
@@ -70,6 +76,13 @@ We use a series of API integrations to make our application run smoothly. Be sur
   * [AWS S3](http://aws.amazon.com) Static asset host provider
   * [Heroku](http://www.heroku.com) App hosting sever
   * [Google Analytics](http://analytics.google.com) User tracking and analytics
+
+## Production Variables
+The follow environment variables need to be set for production (in the Heroku instance):
+  * AWS_ACCESS_KEY_ID - The access key for your AWS S3 bucket account
+  * AWS_SECRET_ACCESS_KEY - The secret key for your AWS S3 bucket account
+  * GA-KEY - The unique identifier for your Google Analytics profile
+  * S3_BUCKET_NAME - The name of your S3 bucket where you will be storing your static assets
 
 ## License
 

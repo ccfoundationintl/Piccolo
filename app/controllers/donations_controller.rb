@@ -100,10 +100,10 @@ class DonationsController < ApplicationController
   # PATCH/PUT /donations/1.json
   def update
     @donation = Donation.find(params[:id])
-    if @donation.donationd_type == "User"
-      @redirect = User.find(@donation.donationd_id)
-    elsif @donation.donationd_type = "Team"
-      @redirect = Team.find(@donation.donationd_id)
+    if @donation.donated_type == "User"
+      @redirect = User.find(@donation.donated_id)
+    elsif @donation.donated_type = "Team"
+      @redirect = Team.find(@donation.donated_id)
     end
     respond_to do |format|
       if @donation.update(donation_params)
@@ -120,10 +120,10 @@ class DonationsController < ApplicationController
   # DELETE /donations/1.json
   def destroy
     @donation = Donation.find(params[:id])
-    if @donation.donationd_type == "User"
-      @redirect = User.find(@donation.donationd_id)
-    elsif @donation.donationd_type = "Team"
-      @redirect = Team.find(@donation.donationd_id)
+    if @donation.donated_type == "User"
+      @redirect = User.find(@donation.donated_id)
+    elsif @donation.donated_type = "Team"
+      @redirect = Team.find(@donation.donated_id)
     end
     @donation.destroy
     respond_to do |format|
@@ -136,6 +136,6 @@ class DonationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def donation_params
-      params.require(:donation).permit(:amount, :donationd_id, :donationd_type, :is_registration_fee, :is_donation, :stripeEmail, :stripeToken, :email)
+      params.require(:donation).permit(:amount, :donated_id, :donated_type, :is_registration_fee, :is_donation, :stripeEmail, :stripeToken, :email)
     end
 end
