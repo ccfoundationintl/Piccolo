@@ -10,12 +10,12 @@
         %span.input-group-btn
           %button.btn.btn-default{type:"button"}
             %span.glyphicon.glyphicon-search{aria: {hidden:"true"}}
-      - if can? :manage, :all
+      - if can? :manage, Team
         = link_to('Create a new team', new_team_path, class: "btn btn-primary btn-md")
     %br
 
   .row
-    - @divisions.each do |division| 
+    - @divisions.each do |division|
       .col-md-6
         %h4= division.name
         %table.table
