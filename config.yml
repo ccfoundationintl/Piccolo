@@ -20,6 +20,7 @@ defaults: &defaults
 
   # Event Information
   datetime_of_event: 120349563
+  registration_fee_amount: 20
   location_of_event: Example Location
   about_event: Example Event was started in 2015 to support the Brian Piccolo Cancer Research foundation. (ect ect ect)
 
