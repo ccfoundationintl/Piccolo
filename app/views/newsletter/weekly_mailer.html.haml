@@ -1,0 +1,42 @@
+.container{style: "width: 700px;margin-left: auto;margin-right: auto;"}
+  %h3="#{@team.name} Weekly Update"
+
+  %table{style: "width: 100%; text-align: center;table-layout:fixed;"}
+    %tbody
+      %tr{style: "border: 1px solid gray;"}
+        %th Amount raised
+        %th="Number of #{APP_CONFIG['participant_type']}"
+      %tr
+        %td
+          %h2=number_to_currency(@team.amount_raised)
+        %td
+          %h2
+            =@team.users.count
+            =APP_CONFIG['participant_type']
+  %br
+  %table{style: "width: 75%; margin-left: auto;margin-right: auto;"}
+    %tbody
+      %tr
+        %th{colspan: "3"}
+          %h3= "Top 10 #{APP_CONFIG['participant_type']}"
+      - @top_users.each_with_index do |dancer, index|
+        %tr
+          %td{style: "text-align: right;"}
+            =index+1
+            \-
+          %td{style: "text-align: left;"}="#{user.first_name} #{dancer.last_name}"
+          %td=number_to_currency(user.charges.sum('charges.amount'))
+  %table{style: "width: 75%; margin-left: auto;margin-right: auto;"}
+    %tbody
+      %tr
+        %th{colspan: "3"}
+          %h3
+            Top 10 Teams
+      - @top_teams.each_with_index do |team, index|
+        %tr
+          %td{style: "text-align: right;"}
+            = index+1
+            \-
+          %td{style: "text-align: left;"}=team.name
+          %td=number_to_currency(team.amount_raised)
+
