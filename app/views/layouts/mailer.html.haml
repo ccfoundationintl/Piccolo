@@ -1,0 +1,16 @@
+%html{style:"font-family: 'Arial'; color: #444;"}
+  %body
+    .container{style:"width: 90%; margin-left: auto; margin-right: auto;"}
+      %h1= APP_CONFIG['sitename']
+      %hr
+        = yield
+      %br
+      %br
+      %hr
+      %br
+      .footer{style: "font-size: 70%; text-align: center"}
+        = link_to APP_CONFIG['sitename'], root_url
+        |
+        = link_to APP_CONFIG['university'], "#{APP_CONFIG['university_url']}"
+        %br
+        %p="#{APP_CONFIG['address_line_1']}, #{APP_CONFIG['city']}, #{APP_CONFIG['state']} #{APP_CONFIG['zip_code']}"
