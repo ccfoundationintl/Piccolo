@@ -27,6 +27,9 @@ defaults: &defaults
   # Event Participants (dancers, runners, ect.)
   participant_type: runner
 
+  # Emails
+  donation_message: Donate to our event!
+
   # Contact Information
   address_line_1: 123 Example St.
   address_line_2: P.O. Box 123
