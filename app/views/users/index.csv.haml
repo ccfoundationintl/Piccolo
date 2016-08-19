@@ -1,0 +1,10 @@
+- headers = ['First Name', 'Last Name', 'Email', 'T-Shirt Size', 'Team', 'Gender', 'Amount Raised', 'Year', 'Contact Name', 'Contact Number', 'Date of sign up','Paid registration fee?']
+= CSV.generate_line headers
+- @users.each do |user|
+  - @amount_raised = user.donations.where(is_donation: true).sum(:amount)
+  - if user.team.nil?
+    - @team = "Individual"
+  - else
+    - @team = user.team.name
+  - @registration_fee = user.donations.where(is_registration_fee: true).any?
+  = CSV.generate_line([user.first_name, user.last_name, user.email, user.tshirt, @team, user.gender, @amount_raised, user.class_year, user.contact_name, user.contact_number, user.created_at, @registration_fee]).html_safe
