@@ -30,8 +30,8 @@
                           var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
                           var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
                           var is_donation = $("<input type=hidden name=is_donation value=true />")
-                          var charge_type = $("<input type=hidden name=charge_type value=All />")
-                          $("form").append(tokenInput).append(emailInput).append(is_donation).append(charge_type).submit();
+                          var donation_type = $("<input type=hidden name=donation_type value=User />")
+                          $("form").append(tokenInput).append(emailInput).append(is_donation).append(donation_type).submit();
                         }
                       });
 
@@ -61,25 +61,25 @@
       %p.lead=APP_CONFIG['site_description']
       %br
       %br
-  //.row
-  //  .col-md-6
-  //    %h3 Top 10 Teams
-  //    %table.table.table-bordered
-  //      - @top_10_teams.each_with_index do |team, index|
-  //        %tr
-  //          %td.text-center
-  //            %strong= "#{index+1}"
-  //          %td= link_to(team.name, team)
-  //          %td.text-success.text-center= number_to_currency(team.amount_raised)
-  //  .col-md-6
-  //    %h3 Top 10 users
-  //    %table.table.table-bordered
-  //      - @top_10_users.each_with_index do |user, index|
-  //        %tr
-  //          %td.text-center
-  //            %strong= "#{index+1}"
-  //          %td= link_to("#{user.first_name} #{user.last_name}", user)
-  //          %td.text-success.text-center=number_to_currency(user_amount_raised(user))
+  .row
+    .col-md-6
+      %h3 Top 10 Teams
+      %table.table.table-bordered
+        - @top_10_teams.each_with_index do |team, index|
+          %tr
+            %td.text-center
+              %strong= "#{index+1}"
+            %td= link_to(team.name, team)
+            %td.text-success.text-center= number_to_currency(team.amount_raised)
+    .col-md-6
+      %h3="Top 10 #{APP_CONFIG['participant_type'].capitalize.pluralize(2)}"
+      %table.table.table-bordered
+        - @top_10_users.each_with_index do |user, index|
+          %tr
+            %td.text-center
+              %strong= "#{index+1}"
+            %td= link_to("#{user.first_name} #{user.last_name}", user)
+            %td.text-success.text-center=number_to_currency(amount_raised(user))
   - if @sponsors.count > 0
     .row
       %br
