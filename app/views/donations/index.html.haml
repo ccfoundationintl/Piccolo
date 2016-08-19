@@ -1,0 +1,106 @@
+- content_for :head do
+  %meta{:content => "Make a donation", :property => "og:title"}/
+  %meta{:content => "#{root_url}/images/app_icon.png", :property => "og:image"}/
+  %meta{:content => "#{root_url}/images/app_icon.png", :property => "og:image:url"}/
+  %meta{:content => "#{request.original_url}", :property => "og:url"}/
+  %meta{:content => "#{APP_CONFIG['site_description']}", :property => "og:description"}/
+.container
+  .page-header.text-center
+    %h1 Support Us
+  .row
+    .col-md-6
+      .well
+        %h3="Donate to a #{APP_CONFIG['participant_type']}"
+        %p="Send a donation to your friends, family, and fellow #{APP_CONFIG['participant_type'].pluralize(2)} to help support their fundraising efforts!"
+        .form-inline
+          = form_tag(users_path, :method => "get", id: "search-form") do
+            .input-group
+              = text_field_tag(:search, params[:search], class: "form-control input-md", placeholder: "Search")
+              %span.input-group-btn
+                %button.btn.btn-default{type:"button"}
+                  %span.glyphicon.glyphicon-search{aria: {hidden:"true"}}
+    .col-md-6
+      .well
+        %h3 Donate to a team
+        %p Send a donation to your favorite team to help support their fundraising efforts!
+        .form-inline
+          = form_tag(users_path, :method => "get", id: "search-form") do
+            .input-group
+              = text_field_tag(:search, params[:search], class: "form-control input-md", placeholder: "Search teams...")
+              %span.input-group-btn
+                %button.btn.btn-default{type:"button"}
+                  %span.glyphicon.glyphicon-search{aria: {hidden:"true"}}
+  .row
+    .col-md-6
+      .well
+        %h3="Donate to #{APP_CONFIG['sitename']}"
+        %p="If you do not want to donate to a specific user or team, you can make a general donation to #{APP_CONFIG['sitename']}."
+        = form_for :donation do
+          .form-inline
+            .form-group
+              .input-group
+                %span.pre-input $
+                = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off", value: 10
+                %span.post-input USD
+              %br
+              %br
+              %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
+                %b Give by  
+                %i.fa.fa-1x.fa-credit-card
+              %span.action
+                :javascript
+                  var handler = StripeCheckout.configure({
+                    key: "#{Rails.configuration.stripe[:publishable_key]}",
+                    locale: 'auto',
+                    token: function(token) {
+                      var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
+                      var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
+                      var is_donation = $("<input type=hidden name=is_donation value=true />")
+                      var donation_type = $("<input type=hidden name=donation_type value=All />")
+                      $("form").append(tokenInput).append(emailInput).append(is_donation).append(donation_type).submit();
+                    }
+                  });
+
+                  $('#stripeButton').on('click', function(e) {
+                    var amount = $("#total-amount-val").val();
+                    if(amount > 0) {
+                      handler.open({
+                        name: "#{APP_CONFIG['charity_name']}",
+                        image: "/images/app_icon.png",
+                        description: "#{APP_CONFIG['donation_tagline']}",
+                        amount: amount*100,
+                        billingAddress: true
+                      });
+                    }
+                    e.preventDefault();
+                  });
+
+                  // Close Checkout on page navigation
+                  $(window).on('popstate', function() {
+                    handler.close();
+                  });
+    .col-md-6
+      .well
+        %h3 Send in donations by mail
+        %p="We also accept cash or check donations! Checks can be made out to the #{APP_CONFIG['charity_name']}. If you would like this amount to be credited to a specific user, organization, or department, simply include a note with that information in the envelope. All donations can be sent to:"
+        %address
+          %strong=APP_CONFIG['charity_name']
+          %br
+          = APP_CONFIG['address_line_1']
+          %br
+          = APP_CONFIG['address_line_2']
+          %br
+          = "#{APP_CONFIG['city']}, #{APP_CONFIG['state']} #{APP_CONFIG['zip_code']}"
+  - if can? :manage, Donation
+    .row
+      .col-md-6
+        .well
+          %h3 Record a donation
+          = form_for @donation do |f|
+            = f.label :amount, class: "label"
+            = f.text_field :amount, placeholder: "Enter amount", class: "form-control"
+            = f.label :email, class: "label"
+            = f.text_field :donor_email, placeholder: "Email of donor (if available)", class: "form-control"
+            = f.hidden_field :is_donation, value: true
+            = f.submit "Save", class: "btn btn-success btn-block btn-md"
+

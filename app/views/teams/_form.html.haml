@@ -4,12 +4,14 @@
       %h2
         = pluralize(@team.errors.count, "error")
         prohibited this team from being saved:
-      %ul
-        - @team.errors.full_messages.each do |message|
-          %li= message
+
+        %ul
+          = @team.errors.full_messages.each do |message|
+            %li= message
+
   .field
-    = f.label :name
-    %br/
-    = f.text_field :name
+    = f.label :name, class: "label"
+    = f.text_field :name, class: "form-control"
+  %br
   .actions
-    = f.submit
+    = f.submit "Save", class: "btn btn-md btn-success"

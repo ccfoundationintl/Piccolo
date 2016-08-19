@@ -18,6 +18,9 @@ defaults: &defaults
   charity_name: Brian Piccolo Cancer Research Fund
   donation_tagline: Support our participants
 
+  # Donation Email
+  donation_email_text: I have pledged to participate in the Example Event. This event benefits the Example Charity, which supports xx research. It is the largest student philanthropy event at Example University. I would be honored if you could donate to my campaign.
+
   # Event Information
   datetime_of_event: 120349563
   registration_fee_amount: 20
