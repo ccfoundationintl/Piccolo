@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @amount_raised_goal = (@user.donations.where(is_donation: true).sum(:amount)/@user.raise_goal)*100
     @donations = @user.donations.where(is_donation: true).order('created_at desc')
-    @charge = Donation.new
+    @donation = Donation.new
     @donation_record = Donation.new
     @referral = Referral.new
     @registration_fee = @user.donations.where(is_registration_fee: true).empty?
