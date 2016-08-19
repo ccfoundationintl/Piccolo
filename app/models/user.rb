@@ -34,7 +34,7 @@
 
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
   belongs_to :team
   has_many :donations, as: :donated
