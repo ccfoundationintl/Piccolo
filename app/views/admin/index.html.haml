@@ -1,2 +1,58 @@
-%h1 Admin#index
-%p Find me in app/views/admin/index.html.haml
+.container
+  %h1.page-header Admin Panel
+  .row
+    .col-md-3
+      .well
+        %h4
+          .fa.fa-file-excel-o
+          Download Excel
+        / = link_to "All donations", donations_path(format: :csv), class: "btn btn-md btn-default btn-block"
+        = link_to users_path(format: :csv), class: "btn btn-md btn-default btn-block" do
+          .fa.fa-user
+          =APP_CONFIG['participant_type'].capitalize.pluralize(2)
+        = link_to teams_path(format: :csv), class: "btn btn-md btn-default btn-block" do
+          .fa.fa-group
+          Teams
+    .col-md-9
+      .panel.panel-default.panel-body
+        %h4
+          .fa.fa-line-chart
+          Stats
+        .row.text-center
+          .col-md-4
+            .thumbnail
+              %h5.text-muted= "#{APP_CONFIG['participant_type'].capitalize.pluralize(2)} signed up"
+              %h2=@users_count
+          .col-md-4
+            .thumbnail
+              %h5.text-muted Amount raised
+              %h2=number_to_currency(@amount_raised)
+          .col-md-4
+            .thumbnail
+              %h5.text-muted Active teams
+              %h2=@active_teams
+        %hr
+        %h4
+          .fa.fa-paper-plane
+          ="Mass email to #{APP_CONFIG['participant_type'].pluralize(2)}"
+        = form_tag(send_mass_email_path)  do
+          .form-group
+            = text_field_tag :subject, nil, class: "form-control", placeholder: "Enter a subject"
+          .form-group
+            = text_area_tag :message, nil, class: "form-control", rows: 8, placeholder: "Enter a message to email to the #{APP_CONFIG['participant_type'].pluralize(2)}"
+            = hidden_field_tag :type, nil, value: "Dancer"
+          .action
+            = submit_tag "Send Message", class: "btn btn-md btn-default"
+        %hr
+        %h4
+          .fa.fa-paper-plane
+          Mass email to donors
+        = form_tag(send_mass_email_path)  do
+          .form-group
+            = text_field_tag :subject, nil, class: "form-control", placeholder: "Enter a subject"
+          .form-group
+            .text-muted Dear (Donor's Name),
+            = text_area_tag :message, nil, class: "form-control", rows: 8, placeholder: "Enter a message to email to the donors"
+            = hidden_field_tag :type, nil, value: "Donor"
+          .action
+            = submit_tag "Send Message", class: "btn btn-md btn-default"
