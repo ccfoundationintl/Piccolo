@@ -1,51 +1,95 @@
-= form_for(@user) do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@user.errors.count, "error")
-        prohibited this user from being saved:
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :bio
-    %br/
-    = f.text_area :bio
-  .field
-    = f.label :class_year
-    %br/
-    = f.number_field :class_year
-  .field
-    = f.label :raise_goal
-    %br/
-    = f.number_field :raise_goal
-  .field
-    = f.label :gender
-    %br/
-    = f.text_field :gender
-  .field
-    = f.label :tshirt
-    %br/
-    = f.text_field :tshirt
-  .field
-    = f.label :admin
-    %br/
-    = f.check_box :admin
-  .field
-    = f.label :contact_name
-    %br/
-    = f.text_field :contact_name
-  .field
-    = f.label :contact_number
-    %br/
-    = f.text_field :contact_number
-  .actions
-    = f.submit
+= form_for(@user, multipart: true) do |f|
+  .container
+    .row
+      .col-md-3
+        %p Change your profile picture
+        = image_tag @user.avatar.url(:medium), class: "img-responsive img-rounded"
+        = f.label :avatar, "Upload a new photo", class: "label"
+        = f.file_field :avatar, class: "form-control"
+      .col-md-6
+        .well
+          = if @user.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@user.errors.count, "error")
+                stopped you from signing up:
+
+              %ul
+                = @user.errors.full_messages.each do |message|
+                  %li= message
+
+          .row
+            .form-group
+              =f.label :first_name, class: "label"
+              = f.text_field(:first_name, autofocus: true, id: "first_name", class: "form-control", placeholder: "Enter your first name")
+            .form-group
+              =f.label :last_name, class: "label"
+              = f.text_field(:last_name, id: "last_name", class: "form-control", placeholder: "Enter your last name")
+            .form-group
+              =f.label :email, class: "label"
+              = f.email_field(:email, id: "email", class: "form-control", autocomplete: "off", placeholder: "Enter your email")
+            .form-group
+              =f.label :password, class: "label"
+              = f.password_field(:password, id: "password", class: "form-control", autocomplete: "off", placeholder: "Enter a new password")
+            %hr
+            %h4.text-center
+              .fa.fa-user.text-primary
+              General Information
+            .form-group
+              =f.label :bio, class: "label"
+              = f.text_area :bio, class: "form-control", rows: 8, placeholder: "Enter a bio about yourself"
+            .form-group
+              .label Sex
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  .fa.fa-male
+                  Male
+                  = f.radio_button :gender, "Male"
+                .btn.btn-primary.btn-sm
+                  .fa.fa-female
+                  Female
+                  = f.radio_button :gender, "Female"
+            .form-group
+              .label Class Year
+              = f.text_field :class_year, class: "form-control", placeholder: "Enter your class year"
+            .form-group
+              .label 
+                Team
+                %span.text-muted (Optional)
+              %br
+              =f.collection_select :team_id, @teams, :id, :name, {prompt: "Select a team to join"}, {class: "form-control"}
+            .form-group
+              .label T-Shirt Size
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  Small
+                  = f.radio_button :tshirt, "Small"
+                .btn.btn-primary.btn-sm
+                  Medium
+                  = f.radio_button :tshirt, "Medium"
+                .btn.btn-primary.btn-sm
+                  Large
+                  = f.radio_button :tshirt, "Large"
+                .btn.btn-primary.btn-sm
+                  X-Large
+                  = f.radio_button :tshirt, "X-Large"
+            .form-group
+              .label What is your goal to raise?
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  $500
+                  = f.radio_button :raise_goal, 500
+                .btn.btn-primary.btn-sm
+                  $1,000
+                  = f.radio_button :raise_goal, 1000
+                .btn.btn-primary.btn-sm
+                  $2,000
+                  = f.radio_button :raise_goal, 2000
+                .btn.btn-primary.btn-sm
+                  $5,000
+                  = f.radio_button :raise_goal, 5000
+            %br
+          = f.submit "Save changes", class: "btn btn-block btn-success"
