@@ -3,11 +3,7 @@
   %meta{:content => "#{@user.avatar.url(:large)}", :property => "og:image"}/
   %meta{:content => "#{@user.avatar.url(:large)}", :property => "og:image:url"}/
   %meta{:content => "#{request.original_url}", :property => "og:url"}/
-  %meta{:content => "Support #{name(@user)}'s campaign! Wake ‘N Shake is a 12-hour dance marathon held every spring at Wake Forest University, benefiting the Brian Piccolo Cancer Research Fund.", :property => "og:description"}/
-.container
-  .row
-    .col-md-12
-      //- flash_messages
+  %meta{:content => "Support #{name(@user)}'s campaign! #{APP_CONFIG['site_description']}"}/
 .container
   .col-md-3
     %br
@@ -47,33 +43,21 @@
       %br
       %hr
       %h4 Donations
-      = form_for @charge_record do |f|
+      = form_for @donation_record do |f|
         = f.label :amount, class: "label"
         = f.text_field :amount, placeholder: "Enter amount", class: "form-control"
-        = f.label :email, class: "label"
-        = f.text_field :email, placeholder: "Email of donor", class: "form-control"
+        = f.label :donor_email, class: "label"
+        = f.text_field :donor_email, placeholder: "Email of donor", class: "form-control"
         = f.label "Registration Fee", class: "label"
         = f.check_box :is_registration_fee, checked_value: true
         = f.label "Donation", class: "label"
         = f.check_box :is_donation, checked_value: true
-        = f.hidden_field :charged_type, value: "User"
-        = f.hidden_field :charged_id, value: @user.id
+        = f.hidden_field :donationd_type, value: "User"
+        = f.hidden_field :donationd_id, value: @user.id
         = f.submit "Save", class: "btn btn-success btn-block btn-md"
     - if can? :manage, :all
       %br
-      %hr
-      %h4 WNS Staff
-      = form_for @user, {controller: "/users", action: :set_committee, id: @user.id} do |f|
-        = f.label "Staff Title", class: "label"
-        = f.text_field :stafftitle, placeholder: "Enter staff title", class: "form-control"
-        %br
-        = f.submit "Save", class: "btn btn-md btn-success"
-      %br
       %h4 Access
-      - if @user.staff_member
-        = link_to "Remove accountant", {controller: "/users", action: :set_staff, id: @user.id, value: false}, class: "btn btn-danger btn-md btn-block"
-      - else
-        = link_to "Make accountant", {controller: "/users", action: :set_staff, id: @user.id, value: true}, class: "btn btn-default btn-md btn-block"
       - if @user.admin
         = link_to "Remove admin", {controller: "/users", action: :set_admin, id: @user.id, value: false}, class: "btn btn-danger btn-md btn-block"
       - else
@@ -89,7 +73,7 @@
         = link_to('Edit your profile', edit_user_path(@user), class: "btn btn-default btn-sm")
         = link_to('Delete your profile', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm")
         - if @registration_fee
-          = link_to('Pay your registration fee', {controller: :charges, action: :registration_fee}, class: "btn btn-primary btn-sm")
+          = link_to('Pay your registration fee', {controller: :donations, action: :registration_fee}, class: "btn btn-primary btn-sm")
     .panel.panel-default.panel-body
       %h4
         = @user.first_name
@@ -108,7 +92,7 @@
         - else
           her
         campaign!
-      = form_for @charge do
+      = form_for @donation do
         .form-inline
           .form-group
             .input-group
@@ -129,9 +113,9 @@
                     var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
                     var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
                     var is_donation = $("<input type=hidden name=is_donation value=true />")
-                    var charge_type = $("<input type=hidden name=charge_type value=User />")
+                    var donation_type = $("<input type=hidden name=charge_type value=User />")
                     var user_id = $("<input type=hidden name=user_id value=#{@user.id} />")
-                    $("form").append(tokenInput).append(emailInput).append(is_donation).append(charge_type).append(user_id).submit();
+                    $("form").append(tokenInput).append(emailInput).append(is_donation).append(donation_type).append(user_id).submit();
                   }
                 });
 
@@ -187,7 +171,7 @@
         - if can? :manage, donation
           .row
             .col-md-12
-              = link_to "Edit", edit_charge_path(donation), class: "btn btn-xs btn-default"
+              = link_to "Edit", edit_donation_path(donation), class: "btn btn-xs btn-default"
               = link_to "Delete", donation, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs"
   .col-md-1
 
