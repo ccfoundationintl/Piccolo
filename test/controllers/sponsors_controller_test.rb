@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class SponsorsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   setup do
     @sponsor = sponsors(:one)
   end

@@ -20,9 +20,13 @@ one:
   is_registration_fee: false
   is_donation: false
   donor_email: MyString
+  donated_id: 1
+  donated_type: Team
 
 two:
   amount: 1.5
   is_registration_fee: false
   is_donation: false
   donor_email: MyString
+  donated_id: 2
+  donated_type: User
