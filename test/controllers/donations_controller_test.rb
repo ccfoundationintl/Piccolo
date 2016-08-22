@@ -12,14 +12,6 @@ class DonationsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create donation" do
-    assert_difference('Donation.count') do
-      post :create, donation: { amount: @donation.amount, donor_email: @donation.donor_email, is_donation: @donation.is_donation, is_registration_fee: @donation.is_registration_fee }
-    end
-
-    assert_redirected_to donation_path(assigns(:donation))
-  end
-
   test "should show donation" do
     get :show, id: @donation
     assert_response :success
