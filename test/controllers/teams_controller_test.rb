@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class TeamsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   setup do
     @team = teams(:one)
   end
@@ -8,7 +10,6 @@ class TeamsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:teams)
   end
 
   test "should get new" do

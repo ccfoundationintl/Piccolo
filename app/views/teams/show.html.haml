@@ -47,10 +47,10 @@
                       var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
                       var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
                       var is_donation = $("<input type=hidden name=is_donation value=true />")
-                      var charge_type = $("<input type=hidden name=charge_type value=Team />")
+                      var donation_type = $("<input type=hidden name=donation_type value=Team />")
                       var team_id = $("<input type=hidden name=team_id value=#{@team.id} />")
 
-                      $("form").append(tokenInput).append(emailInput).append(is_donation).append(charge_type).append(team_id).submit();
+                      $("form").append(tokenInput).append(emailInput).append(is_donation).append(donation_type).append(team_id).submit();
                     }
                   });
 
@@ -58,11 +58,11 @@
                     var amount = $("#total-amount-val").val();
                     if(amount > 0) {
                       handler.open({
-                      name: "Wake 'N Shake",
-                      image: "/images/app_icon.png",
-                      description: "100% funds cancer research",
-                      amount: amount*100,
-                      billingAddress: true
+                        name: "#{APP_CONFIG['charity_name']}",
+                        image: "/images/app_icon.png",
+                        description: "#{APP_CONFIG['donation_tagline']}",
+                        amount: amount*100,
+                        billingAddress: true
                       });
                     }
                     e.preventDefault();

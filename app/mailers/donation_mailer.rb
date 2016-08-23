@@ -11,10 +11,10 @@ class DonationMailer < ApplicationMailer
   def donation_notification(donation)
     if donation.donated_type == "User"
       @donation = donation
-      if User.find_by(email: @donation.email).present?
-        @donor = User.find_by(email: @donation.email)
+      if User.find_by(email: @donation.donor_email).present?
+        @donor = User.find_by(email: @donation.donor_email)
       end
-      @user = User.find(donation.charged_id).email
+      @user = User.find(donation.donated_id).email
       mail(to: @user, subject: "You have received a donation!", body: @body)
     end
   end

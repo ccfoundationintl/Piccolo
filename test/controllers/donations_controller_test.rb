@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class DonationsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   setup do
     @donation = donations(:one)
   end
@@ -8,20 +10,6 @@ class DonationsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:donations)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create donation" do
-    assert_difference('Donation.count') do
-      post :create, donation: { amount: @donation.amount, donor_email: @donation.donor_email, is_donation: @donation.is_donation, is_registration_fee: @donation.is_registration_fee }
-    end
-
-    assert_redirected_to donation_path(assigns(:donation))
   end
 
   test "should show donation" do
@@ -34,16 +22,4 @@ class DonationsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update donation" do
-    patch :update, id: @donation, donation: { amount: @donation.amount, donor_email: @donation.donor_email, is_donation: @donation.is_donation, is_registration_fee: @donation.is_registration_fee }
-    assert_redirected_to donation_path(assigns(:donation))
-  end
-
-  test "should destroy donation" do
-    assert_difference('Donation.count', -1) do
-      delete :destroy, id: @donation
-    end
-
-    assert_redirected_to donations_path
-  end
 end

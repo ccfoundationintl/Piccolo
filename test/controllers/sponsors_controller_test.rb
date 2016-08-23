@@ -1,14 +1,10 @@
 require 'test_helper'
 
 class SponsorsControllerTest < ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
   setup do
     @sponsor = sponsors(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:sponsors)
   end
 
   test "should get new" do

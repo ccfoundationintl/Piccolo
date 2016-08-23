@@ -18,7 +18,7 @@
                   var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
                   var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
                   var is_registration_fee = $("<input type=hidden name=is_registration_fee value=true />")
-                  var charge_type = $("<input type=hidden name=charge_type value=Dancer />")
+                  var charge_type = $("<input type=hidden name=donation_type value=User />")
                   var user_id = $("<input type=hidden name=user_id value=#{current_user.id} />")
                   $("form").append(tokenInput).append(emailInput).append(is_registration_fee).append(charge_type).append(user_id).submit();
                 }
