@@ -6,8 +6,8 @@
 defaults: &defaults
 
   # General Site Information
-  sitename: Hit The Bricks • DC
-  site_description: Example Event is an event at Example University founded to raise money for Example Charity.
+  sitename: "Hit The Bricks: DC"
+  site_description: "Hit The Bricks: DC is a social fun-run designed to bring our Wake Forest community together in support of a cause near and dear to all of our hearts."
 
   # University Information
   university: Wake Forest University
@@ -16,22 +16,22 @@ defaults: &defaults
 
   # Donation Information
   charity_name: Brian Piccolo Cancer Research Fund
-  donation_tagline: Support our participants
+  donation_tagline: Support our runners
 
   # Donation Email
-  donation_email_text: I have pledged to participate in the Example Event. This event benefits the Example Charity, which supports xx research. It is the largest student philanthropy event at Example University. I would be honored if you could donate to my campaign.
+  donation_email_text: "I have pledged to participate in Hit The Bricks: DC. This event benefits the Example Charity, which supports xx research. It is the largest student philanthropy event at Example University. I would be honored if you could donate to my campaign."
 
   # Event Information
   datetime_of_event: 120349563
   registration_fee_amount: 20
   location_of_event: Example Location
-  about_event: Example Event was started in 2015 to support the Brian Piccolo Cancer Research foundation. (ect ect ect)
+  about_event: "The Brian Piccolo Cancer Drive was established by students in 1980 in memory of Brian Piccolo, a great Wake Forest athlete/alum and Chicago Bears football star who died of cancer. For the past 34 years, Wake Forest students, alumni, and friends have planned and participated in various events to raise funds for cancer research at the Wake Forest Baptist Medical Center’s Comprehensive Cancer Center. The Fund has raised more than $1,750,000 for the WFU Cancer Center! Hit The Bricks was started on campus in 2003. Each year, hundreds of students have gathered on Hearn Plaza to take turns running laps around the Quad.  We are bringing the tradition to the Nation’s Capital – with a few alterations. Hit The Bricks: DC is a social fun-run designed to bring our Wake Forest community together in support of a cause near and dear to all of our hearts."
 
   # Event Participants (dancers, runners, ect.)
   participant_type: runner
 
   # Emails
-  donation_message: Donate to our event!
+  donation_message: "Donate to Hit The Bricks: DC!"
 
   # Contact Information
   address_line_1: 123 Example St.
