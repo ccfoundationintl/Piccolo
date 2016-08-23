@@ -4,6 +4,9 @@ ruby '2.2.0'
 
 gem 'rails', '4.2.5.1'
 
+# Heroku requires this gem
+gem 'rails_12factor'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
