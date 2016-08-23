@@ -37,9 +37,15 @@ class DonationsController < ApplicationController
       # determine if the donation is a donation or registration fee
       @description = ""
       if params[:is_donation].present?
-        @description = "Wake \'N Shake Donation"
+        if params[:user_id].present?
+          @description = "#{APP_CONFIG['sitename']} Donation - User ##{params[:user_id]}"
+        elsif params[:team_id].present?
+          @description = "#{APP_CONFIG['sitename']} Donation - Team ##{params[:team_id]}"
+        else
+          @description = "#{APP_CONFIG['sitename']} Donation - General Donation"
+        end
       elsif params[:is_registration_fee].present?
-        @description = "Wake \'N Shake Registration Fee"
+        @description = "#{APP_CONFIG['sitename']} Registration Fee - User ##{params[:user_id]}"
       end
 
       # registration fee amount - $20
@@ -55,17 +61,17 @@ class DonationsController < ApplicationController
         source: params[:stripeToken]
       )
 
-      donation = Stripe::Donation.create(
+      donation = Stripe::Charge.create(
         customer: customer.id,
         amount: @amount*100,
         description: @description,
         currency: 'usd'
       )
 
-      # associate the donation to a team or dancer
+      # associate the donation to a team or user
       if params[:donation_type] == "User"
-        @dancer = User.find(params[:dancer_id])
-        donation_record = @dancer.donations.new(amount: @amount, email: params[:stripeEmail])
+        @user = User.find(params[:user_id])
+        donation_record = @user.donations.new(amount: @amount, donor_email: params[:stripeEmail])
         if params[:is_donation].present?
           donation_record.is_donation = true
           donation_record.save
@@ -75,14 +81,14 @@ class DonationsController < ApplicationController
         end
       elsif params[:donation_type] == "Team"
         @team = Team.find(params[:team_id])
-        donation_record = @team.donations.new(amount: @amount, email: params[:stripeEmail], is_donation: true)
+        donation_record = @team.donations.new(amount: @amount, donor_email: params[:stripeEmail], is_donation: true)
       elsif params[:donation_type] == "All"
-        donation_record = Donation.new(amount: @amount, email: params[:stripeEmail], is_donation: true)
+        donation_record = Donation.new(amount: @amount, donor_email: params[:stripeEmail], is_donation: true)
       end
 
       if donation_record.save
         if donation_record.is_registration_fee.present?
-          redirect_to dancer_path(@dancer)
+          redirect_to user_path(@user)
         elsif donation_record.is_donation.present?
           DonationMailer.donation_notification(donation_record).deliver_later
           redirect_to donation_record
