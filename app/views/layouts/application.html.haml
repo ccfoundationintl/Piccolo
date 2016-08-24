@@ -39,7 +39,7 @@
               %li= link_to("Donate", donations_path)
               %li= link_to(APP_CONFIG['participant_type'].pluralize(2), users_path)
               %li= link_to("Teams", teams_path)
-              - if Sponsor.count > 1
+              - if Sponsor.count >= 1
                 %li= link_to("Our Sponsors", sponsors_path)
             %ul.nav.navbar-nav.navbar-right
               %li.divider-vertical.hidden-xs
