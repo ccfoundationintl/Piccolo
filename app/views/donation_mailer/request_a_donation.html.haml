@@ -2,7 +2,7 @@
   Dear
   = succeed "," do
     = @referral.name
-%p=APP_CONFIG['donation_email_text']
+%p=APP_CONFIG['donation_email_text'].html_safe
 %p
   You can send a donation by going to 
   = succeed "." do
