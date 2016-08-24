@@ -70,6 +70,8 @@
             .form-group
               .label T-Shirt Size
               %br
+              %small.text-success You will only be given a T-Shirt if you raise $100 or more
+              %br
               .btn-group{data:{toggle: "buttons"}}
                 .btn.btn-primary.btn-sm
                   Small
@@ -87,6 +89,9 @@
               .label What is your goal to raise?
               %br
               .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  $100
+                  = f.radio_button :raise_goal, 100
                 .btn.btn-primary.btn-sm
                   $500
                   = f.radio_button :raise_goal, 500
