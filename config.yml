@@ -8,6 +8,7 @@ defaults: &defaults
   # General Site Information
   sitename: Example Event
   site_description: Example Event is an event at Example University founded to raise money for Example Charity.
+  url_to_site: "http://www.example.com"
 
   # University Information
   university: Example University
