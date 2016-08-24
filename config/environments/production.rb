@@ -91,6 +91,6 @@ Rails.application.configure do
     }
   }
 
-  config.action_mailer.default_url_options = { :host => "http://www.example.com"}
+  config.action_mailer.default_url_options = { :host => "http://www.dchitthebricks.com"}
 
 end
