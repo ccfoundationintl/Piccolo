@@ -4,8 +4,8 @@
     = APP_CONFIG['sitename']
   .row
     .col-md-6
-      %p= APP_CONFIG['about_event']
-      
+      %p= APP_CONFIG['about_event'].html_safe
+
       %br
       .text-center
         %p= link_to("Help us reach our goal", donations_path, class: "btn btn-primary btn-lg btn-block")
