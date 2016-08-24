@@ -12,6 +12,9 @@
   .field
     = f.label :name, class: "label"
     = f.text_field :name, class: "form-control"
+  .field
+    = f.label :division_id, class: "label"
+    = f.collection_select :division_id, Division.all.order('name'), :id, :name, {prompt: "Select a division for your team"}, {class: "form-control"}
   %br
   .actions
     = f.submit "Save", class: "btn btn-md btn-success"

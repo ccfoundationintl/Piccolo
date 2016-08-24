@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ->
+  # Hide/show create a team in sign up form
+  hide_team = () ->
+    $('#add_team').toggle()
+  show_team = () ->
+    $('#add_team').toggle()
+
+  $('#add_team').hide()
+
+  $('#add_team_link').click ->
+    show_team()
+    false

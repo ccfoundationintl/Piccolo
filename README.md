@@ -44,6 +44,8 @@ It will generate demo users, teams, and donations.
 
 The beauty of this template is that you are able to customize everything about it. To customize all the variables, edit the `config.yml` file found in the root directory of this project. In there are all the configuration variables used to customize the site.
 
+You will need to seed the divisions so that when teams sign up, they have the option to join a division. Example divisions are: fraternity, sorority, open, alumni, faculty, ect.
+
 ## Tests
 
 To run the tests, enter:

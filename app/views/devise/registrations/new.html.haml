@@ -51,17 +51,22 @@
               .label Class Year
               = f.text_field :class_year, class: "form-control", placeholder: "Enter your class year"
             .form-group
-              .label 
+              .label
                 Team
                 %span.text-muted (Optional)
               %br
-              =f.collection_select :team_id, Team.all.order('name'), :id, :name, {prompt: "Select a team to join"}, {class: "form-control"}
+              =f.collection_select :team_id, Team.all.order('name'), :id, :name, {prompt: "Select a team to join"}, {class: "form-control", id: "team_select"}
               = f.fields_for :team, resource.build_team do |t|
-                .field
-                  = t.label :team, "or create a new team", class: "label"
-                  = t.text_field :name, class: "form-control", placeholder: "Enter a team name"
-                  = t.hidden_field :category, value: "Open"
-                  = t.hidden_field :amount_raised, value: 0
+                %a#add_team_link.text-center or create a new team
+                %div#add_team
+                  .field
+                    = t.label :name, class: "label"
+                    = t.text_field :name, class: "form-control", placeholder: "Enter a team name"
+                    = t.hidden_field :division, value: "Open"
+                    = t.hidden_field :amount_raised, value: 0
+                  .field
+                    = t.label :division, class: "label"
+                    = t.collection_select :division_id, Division.all.order('name'), :id, :name, {prompt: "Select a division for your team"}, {class: "form-control"}
             .form-group
               .label T-Shirt Size
               %br
