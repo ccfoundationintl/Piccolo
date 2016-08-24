@@ -8,6 +8,7 @@ defaults: &defaults
   # General Site Information
   sitename: "Hit The Bricks: DC"
   site_description: "Hit The Bricks: DC is a social fun-run designed to bring our Wake Forest community together in support of a cause near and dear to all of our hearts."
+  url_to_site: "http://www.dchitthebricks.com"
 
   # University Information
   university: Wake Forest University
