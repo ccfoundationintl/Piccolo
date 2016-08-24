@@ -1,59 +1,25 @@
-#bg
-  .jumbotron
-    .container.text-center
-      %br
-      %h2
-        Support our
-        = APP_CONFIG['participant_type'].pluralize(2)
-      %p 100% of your donations goes to cancer research
-      .row
-        .col-md-4.col-md-offset-4
-          .well.well-clear
-            = form_for @donation do
-              .form-inline
-                .form-group
-                  .input-group
-                    %span.pre-input $
-                    = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off", value: 10
-                    %span.post-input USD
-                  %br
-                  %br
-                  %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
-                    %b Give by  
-                    %i.fa.fa-1x.fa-credit-card
-                  %span.action
-                    :javascript
-                      var handler = StripeCheckout.configure({
-                        key: "#{Rails.configuration.stripe[:publishable_key]}",
-                        locale: 'auto',
-                        token: function(token) {
-                          var tokenInput = $("<input type=hidden name=stripeToken />").val(token.id);
-                          var emailInput = $("<input type=hidden name=stripeEmail />").val(token.email);
-                          var is_donation = $("<input type=hidden name=is_donation value=true />")
-                          var donation_type = $("<input type=hidden name=donation_type value=All />")
-                          $("form").append(tokenInput).append(emailInput).append(is_donation).append(donation_type).submit();
-                        }
-                      });
-
-                      $('#stripeButton').on('click', function(e) {
-                        var amount = $("#total-amount-val").val();
-                        if(amount > 0) {
-                          handler.open({
-                            name: "#{APP_CONFIG['charity_name']}",
-                            image: "/images/app_icon.png",
-                            description: "#{APP_CONFIG['donation_tagline']}",
-                            amount: amount*100,
-                            billingAddress: true
-                          });
-                        }
-                        e.preventDefault();
-                      });
-
-                      // Close Checkout on page navigation
-                      $(window).on('popstate', function() {
-                        handler.close();
-                      });
-          = link_to "or become a #{APP_CONFIG['participant_type']}", new_user_registration_path, class: "btn btn-md btn-default btn-sign-up"
+.jumbotron
+  %video#bgvid{:autoplay => true, :loop => true, :poster => "https://s3.amazonaws.com/htb-dc/htb-bg.jpg"}
+    %source{:src => "https://s3.amazonaws.com/htb-dc/htb-video.mp4", :type => "video/mp4"}
+    %source{:src => "https://s3.amazonaws.com/htb-dc/htb-video.webm", :type => "video/webm; codecs=vp8),vorbis"}
+    %img{src: "https://s3.amazonaws.com/htb-dc/bg-image.jpg"}
+  /[if lt IE 9]
+    :javascript
+      document.createElement('video');
+  .container.text-center
+    %br
+    %br
+    %h1 Hit The Bricks: DC
+    %br
+    %p Support our runners: 100% of your donations go to cancer research
+    %br
+    %br
+    .row
+      .col-md-4.col-md-offset-4
+        = link_to "Join the fun run!", new_user_registration_path, class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"
+        %br
+        %br
+        = link_to "or donate to the cause", donations_path, class: "btn btn-md btn-default btn-sign-up"
 .container
   .row
     %h2.text-center.text-muted Saturday, October 1st at 9am
@@ -64,25 +30,25 @@
       %p.lead=APP_CONFIG['site_description']
       %br
       %br
-  .row
-    .col-md-6
-      %h3 Top 10 Teams
-      %table.table.table-bordered
-        - @top_10_teams.each_with_index do |team, index|
-          %tr
-            %td.text-center
-              %strong= "#{index+1}"
-            %td= link_to(team.name, team)
-            %td.text-success.text-center= number_to_currency(team.amount_raised)
-    .col-md-6
-      %h3="Top 10 #{APP_CONFIG['participant_type'].capitalize.pluralize(2)}"
-      %table.table.table-bordered
-        - @top_10_users.each_with_index do |user, index|
-          %tr
-            %td.text-center
-              %strong= "#{index+1}"
-            %td= link_to("#{user.first_name} #{user.last_name}", user)
-            %td.text-success.text-center=number_to_currency(amount_raised(user))
+  / .row
+  /   .col-md-6
+  /     %h3 Top 10 Teams
+  /     %table.table.table-bordered
+  /       - @top_10_teams.each_with_index do |team, index|
+  /         %tr
+  /           %td.text-center
+  /             %strong= "#{index+1}"
+  /           %td= link_to(team.name, team)
+  /           %td.text-success.text-center= number_to_currency(team.amount_raised)
+  /   .col-md-6
+  /     %h3="Top 10 #{APP_CONFIG['participant_type'].capitalize.pluralize(2)}"
+  /     %table.table.table-bordered
+  /       - @top_10_users.each_with_index do |user, index|
+  /         %tr
+  /           %td.text-center
+  /             %strong= "#{index+1}"
+  /           %td= link_to("#{user.first_name} #{user.last_name}", user)
+  /           %td.text-success.text-center=number_to_currency(amount_raised(user))
   - if @sponsors.count > 0
     .row
       %br

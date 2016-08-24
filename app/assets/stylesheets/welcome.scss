@@ -1,6 +1,6 @@
 .jumbotron {
   min-height: 500px;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5);
   color: #FFF;
   margin-bottom: 0px;
   overflow: hidden;
@@ -72,4 +72,39 @@
 .events-ticker li {
   height: 75px;
   padding-top: 8px;
+}
+/* Background video */
+video#bgvid { 
+    position: absolute;
+    top: 50%;
+    vertical-align: baseline;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+    height: auto;
+    z-index: -100;
+    transition: .25s opacity .25s linear;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(https://s3.amazonaws.com/htb-dc/htb-bg.jpg) no-repeat;
+    background-size: cover; 
+}
+
+video {
+    display: block;
+    object-fit: contain;
+}
+
+@media only screen and (max-width: 55em){
+    .jumbotron {
+         background:
+         url(https://s3.amazonaws.com/htb-dc/bg-image.jpg) no-repeat;
+    }
+    #bgvid {
+        display: none;
+        background: url(https://s3.amazonaws.com/htb-dc/htb-bg.jpg) repeat;
+    }
 }
