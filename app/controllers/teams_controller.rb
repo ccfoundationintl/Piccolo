@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
     if params[:search]
       @divisions = Division.joins(teams: [:users]).distinct.search(params[:search]).order('amount_raised desc')
     else
-      @divisions = Division.joins(teams: [:users])
+      @divisions = Division.order('name asc')
     end
   end
 
