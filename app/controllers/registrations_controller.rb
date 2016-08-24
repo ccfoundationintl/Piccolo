@@ -35,10 +35,10 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :class_year, :tshirt, :avatar, :team, :team_id, :raise_goal, :contact_name, :contact_number, :referrals, referrals_attributes: [:name, :email], team_attributes: [:name, :amount_raised])
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :class_year, :tshirt, :avatar, :team, :team_id, :raise_goal, :contact_name, :contact_number, :referrals, referrals_attributes: [:name, :email], team_attributes: [:name, :amount_raised, :division_id])
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :class_year, :tshirt, :avatar, :team, :team_id, :raise_goal, team_attributes: [:name])
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :gender, :class_year, :tshirt, :avatar, :team, :team_id, :raise_goal, team_attributes: [:name, :division_id])
   end
 end
