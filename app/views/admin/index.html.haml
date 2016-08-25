@@ -40,7 +40,7 @@
             = text_field_tag :subject, nil, class: "form-control", placeholder: "Enter a subject"
           .form-group
             = text_area_tag :message, nil, class: "form-control", rows: 8, placeholder: "Enter a message to email to the #{APP_CONFIG['participant_type'].pluralize(2)}"
-            = hidden_field_tag :type, nil, value: "Dancer"
+            = hidden_field_tag :type, nil, value: "User"
           .action
             = submit_tag "Send Message", class: "btn btn-md btn-default"
         %hr
