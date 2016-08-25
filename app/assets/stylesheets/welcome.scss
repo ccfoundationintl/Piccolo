@@ -90,7 +90,8 @@ video#bgvid {
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     background: url(https://s3.amazonaws.com/htb-dc/htb-bg.jpg) no-repeat;
-    background-size: cover; 
+    background-size: cover;
+    background-position: center center;
 }
 
 video {
@@ -100,11 +101,13 @@ video {
 
 @media only screen and (max-width: 55em){
     .jumbotron {
-         background:
-         url(https://s3.amazonaws.com/htb-dc/bg-image.jpg) no-repeat;
+         background: url(https://s3.amazonaws.com/htb-dc/bg-image.jpg) no-repeat;
+         background-position: center center;
     }
     #bgvid {
         display: none;
         background: url(https://s3.amazonaws.com/htb-dc/htb-bg.jpg) repeat;
+        background-position: center center;
+
     }
 }
