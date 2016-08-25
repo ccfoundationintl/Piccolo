@@ -40,7 +40,7 @@
               %li= link_to(APP_CONFIG['participant_type'].pluralize(2), users_path)
               %li= link_to("Teams", teams_path)
               - if Sponsor.count >= 1
-                %li= link_to("Our Sponsors", sponsors_path)
+                %li= link_to("Sponsors", sponsors_path)
               %li= link_to("Directions", { controller: '/about', action: :directions })
             %ul.nav.navbar-nav.navbar-right
               %li.divider-vertical.hidden-xs
