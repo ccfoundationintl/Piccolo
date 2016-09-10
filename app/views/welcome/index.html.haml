@@ -20,14 +20,16 @@
         %br
         %br
         = link_to "or donate to the cause", donations_path, class: "btn btn-md btn-default btn-sign-up"
+    .row
+      %h2.text-center Saturday, October 1st 9-11am
+      %p.text-center.lead.text-muted= link_to "Constitution Gardens on the National Mall", "https://www.google.com/maps/place/Constitution+Gardens/@38.8904426,-77.0439746,17.39z/data=!4m5!3m4!1s0x0:0xeeba8d4540fee9d6!8m2!3d38.8911461!4d-77.044213"
+
 .container
-  .row
-    %h2.text-center.text-muted Saturday, October 1st 9-11am
-    %p.text-center.lead= link_to "Constitution Gardens on the National Mall", "https://www.google.com/maps/place/Constitution+Gardens/@38.8904426,-77.0439746,17.39z/data=!4m5!3m4!1s0x0:0xeeba8d4540fee9d6!8m2!3d38.8911461!4d-77.044213"
   .row
     .col-md-10.col-md-offset-1.text-center
       %br
-      %p.lead=APP_CONFIG['site_description']
+      %br
+      %p.lead=APP_CONFIG['site_description'].html_safe
       %br
       %br
   / .row
