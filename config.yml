@@ -25,7 +25,7 @@ defaults: &defaults
   # Event Information
   datetime_of_event: 120349563
   registration_fee_amount: 20
-  location_of_event: National Mall, Washington, DC
+  location_of_event: Constitution Gardens on the National Mall
   about_event: "The Brian Piccolo Cancer Drive was established by students in 1980 in memory of Brian Piccolo, a great Wake Forest athlete/alum and Chicago Bears football star who died of cancer. For the past 34 years, Wake Forest students, alumni, and friends have planned and participated in various events to raise funds for cancer research at the Wake Forest Baptist Medical Center’s Comprehensive Cancer Center. The Fund has raised more than $1,750,000 for the WFU Cancer Center.<br><br>In 2003, Wake Forest students and faculty gathered on Hearn Plaza to raise money by running laps around the quad.  Today, Hit The Bricks is the largest student-run philanthropy event on campus and has become a beloved tradition at Wake Forest.<br><br>The event brings together the entire campus community, as hundreds of students and faculty complete laps in honor and in memory of those who have battled cancer. This year we are bringing Hit The Bricks to the Nation's Capital!"
 
   # Event Participants (dancers, runners, ect.)
