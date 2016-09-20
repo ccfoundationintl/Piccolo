@@ -7,9 +7,9 @@
     :javascript
       document.createElement('video');
   .container.text-center
-    %h1 Hit The Bricks: DC
+    %h1=APP_CONFIG['sitename']
     %br
-    %p Support our runners: 100% of your donations go to cancer research
+    %p="Support our #{APP_CONFIG['participants']}: 100% of your donations go to cancer research"
     %br
     %br
     .row
@@ -20,7 +20,7 @@
         = link_to "or donate to the cause", donations_path, class: "btn btn-md btn-default btn-sign-up"
     .row
       %h2.text-center Saturday, October 1st 9-11am
-      %p.text-center.lead= link_to "Constitution Gardens on the National Mall", "https://www.google.com/maps/place/Constitution+Gardens/@38.8904426,-77.0439746,17.39z/data=!4m5!3m4!1s0x0:0xeeba8d4540fee9d6!8m2!3d38.8911461!4d-77.044213", class: "location"
+      %p.text-center.lead= link_to APP_CONFIG['location_of_event'], "https://www.google.com/maps/place/Constitution+Gardens/@38.8904426,-77.0439746,17.39z/data=!4m5!3m4!1s0x0:0xeeba8d4540fee9d6!8m2!3d38.8911461!4d-77.044213", class: "location"
 
 .container
   .row
