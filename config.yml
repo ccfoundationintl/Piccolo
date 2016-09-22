@@ -7,7 +7,7 @@ defaults: &defaults
 
   # General Site Information
   sitename: "Hit The Bricks: DC"
-  site_description: "Hit The Bricks: DC is a social (emphasis on social) fun-run and walk designed to bring our Wake Forest community together to raise money and support for the Brian Piccolo Cancer Research Fund and the Wake Forest Cancer Center.<br><br>Whether you want to run for two hours, walk a few leisurely laps, bring your dog or kids (strollers included!), or simply show your support by registering and donating to the cause, we welcome your participation and  are excited to have as many DC Wake Foresters as possible involved at whatever level you prefer.<br><br>We hope you will join us for what promises to be a fun day with fellow Wake Foresters to raise money for the Brian Piccolo Cancer Research Fund."
+  site_description: "Hit The Bricks: DC is a social (emphasis on social) fun-run and walk.  Unlike the on-campus edition, this is not a race. We will not be counting or timing laps. Our goal is to bring the Wake Forest community together to raise money and support for the Brian Piccolo Cancer Research Fund and the Wake Forest Cancer Center in a family-friendly and social environment.<br><br>So whether you want to run for the full two hours, walk a few leisurely laps with your friends, pets or kids (strollers included!), or prefer to show your support by donating, we welcome your participation and are excited to have as many DC Wake Foresters as possible involved.<br><br>We hope you will join us for what promises to be a fun day with fellow Wake Foresters to raise money for the Brian Piccolo Cancer Research Fund."
   url_to_site: "http://www.dchitthebricks.com"
 
   # University Information
