@@ -7,8 +7,8 @@ defaults: &defaults
 
   # General Site Information
   sitename: "Hit The Bikes: NYC"
-  site_description: "Hit The Bikes: NYC is a social (emphasis on social) fun-run and walk designed to bring our Wake Forest community together to raise money and support for the Brian Piccolo Cancer Research Fund and the Wake Forest Cancer Center.<br><br>Whether you want to run for two hours, walk a few leisurely laps, bring your dog or kids (strollers included!), or simply show your support by registering and donating to the cause, we welcome your participation and  are excited to have as many DC Wake Foresters as possible involved at whatever level you prefer.<br><br>We hope you will join us for what promises to be a fun day with fellow Wake Foresters to raise money for the Brian Piccolo Cancer Research Fund."
-  url_to_site: "http://www.dchitthebricks.com"
+  site_description: "Hit The Bikes: NYC is a... (enter description here)"
+  url_to_site: "http://www.nychitthebricks.com"
 
   # University Information
   university: Wake Forest University
@@ -26,7 +26,7 @@ defaults: &defaults
   datetime_of_event: 120349563
   registration_fee_amount: 20
   location_of_event: Constitution Gardens on the National Mall
-  about_event: "The Brian Piccolo Cancer Drive was established by students in 1980 in memory of Brian Piccolo, a great Wake Forest athlete/alum and Chicago Bears football star who died of cancer. For the past 34 years, Wake Forest students, alumni, and friends have planned and participated in various events to raise funds for cancer research at the Wake Forest Baptist Medical Center’s Comprehensive Cancer Center. The Fund has raised more than $1,750,000 for the WFU Cancer Center.<br><br>In 2003, Wake Forest students and faculty gathered on Hearn Plaza to raise money by running laps around the quad.  Today, Hit The Bricks is the largest student-run philanthropy event on campus and has become a beloved tradition at Wake Forest.<br><br>The event brings together the entire campus community, as hundreds of students and faculty complete laps in honor and in memory of those who have battled cancer. This year we are bringing Hit The Bricks to the Nation's Capital!"
+  about_event: "The Brian Piccolo Cancer Drive was established by students in 1980 in memory of Brian Piccolo, a great Wake Forest athlete/alum and Chicago Bears football star who died of cancer. For the past 34 years, Wake Forest students, alumni, and friends have planned and participated in various events to raise funds for cancer research at the Wake Forest Baptist Medical Center’s Comprehensive Cancer Center. The Fund has raised more than $1,750,000 for the WFU Cancer Center.<br><br>In 2003, Wake Forest students and faculty gathered on Hearn Plaza to raise money by running laps around the quad.  Today, Hit The Bricks is the largest student-run philanthropy event on campus and has become a beloved tradition at Wake Forest.<br><br>The event brings together the entire campus community, as hundreds of students and faculty complete laps in honor and in memory of those who have battled cancer."
 
   # Event Participants (dancers, runners, ect.)
   participant_type: riders
@@ -40,12 +40,12 @@ defaults: &defaults
   city: Winston-Salem
   state: NC
   zip_code: 27109
-  email: dchitthebricks@gmail.com
+  email: nychitthebikes@gmail.com
   phone: (336) 758-5000
-  twitter: https://twitter.com/dcdeacs
+  twitter: https://twitter.com/nycdeacs
   facebook: https://www.facebook.com/NYCDeacs/
-  instagram: http://www.instagram.com/dchitthebricks
-  youtube: http://www.youtube.com/dchitthebricks
+  instagram: http://www.instagram.com/nychitthebricks
+  youtube: http://www.youtube.com/nychitthebricks
 
 development:
   <<: *defaults
