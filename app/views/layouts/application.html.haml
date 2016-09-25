@@ -40,22 +40,6 @@
               - if Sponsor.count >= 1
                 %li= link_to("Sponsors", sponsors_path)
               %li= link_to("Info", { controller: '/about', action: :directions })
-            %ul.nav.navbar-nav.navbar-right
-              %li.divider-vertical.hidden-xs
-              - if can? :manage, :all
-                %li
-                  = link_to controller: "/admin", action: :index do
-                    %i.fa.fa-key.text-warning
-              - if user_signed_in?
-                %li
-                  = link_to("Profile", user_path(current_user))
-                %li
-                  %p.navbar-btn= link_to("Logout", destroy_user_session_path, method: :delete, class: "btn btn-sign-up")
-              - else
-                %li
-                  = link_to("Log In", new_user_session_path)
-                %li
-                  %p.navbar-btn= link_to("Sign Up", new_user_registration_path, class: "btn btn-sign-up")
     = yield
   %br
   %br
