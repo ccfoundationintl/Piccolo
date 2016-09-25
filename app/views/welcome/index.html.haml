@@ -14,13 +14,13 @@
     %br
     .row
       .col-md-4.col-md-offset-4
-        = link_to "Join the event!", new_user_registration_path, class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"
+        = link_to "Join the event!", "https://secure.www.wfu.edu/event-registration/nyc-hit-the-bikes-at-soulcycle-10-01-2016-1790063408", class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"
         %br
         %br
         = link_to "or donate to the cause", donations_path, class: "btn btn-md btn-default btn-sign-up"
     .row
-      %h2.text-center Saturday, October 1st 9-11am
-      %p.text-center.lead= link_to APP_CONFIG['location_of_event'], "https://www.google.com/maps/place/Constitution+Gardens/@38.8904426,-77.0439746,17.39z/data=!4m5!3m4!1s0x0:0xeeba8d4540fee9d6!8m2!3d38.8911461!4d-77.044213", class: "location"
+      %h2.text-center Saturday, October 1st at 2pm
+      %p.text-center.lead.location= APP_CONFIG['location_of_event'].html_safe
 
 .container
   .row
@@ -30,25 +30,6 @@
       %p.lead=APP_CONFIG['site_description'].html_safe
       %br
       %br
-  / .row
-  /   .col-md-6
-  /     %h3 Top 10 Teams
-  /     %table.table.table-bordered
-  /       - @top_10_teams.each_with_index do |team, index|
-  /         %tr
-  /           %td.text-center
-  /             %strong= "#{index+1}"
-  /           %td= link_to(team.name, team)
-  /           %td.text-success.text-center= number_to_currency(team.amount_raised)
-  /   .col-md-6
-  /     %h3="Top 10 #{APP_CONFIG['participant_type'].capitalize.pluralize(2)}"
-  /     %table.table.table-bordered
-  /       - @top_10_users.each_with_index do |user, index|
-  /         %tr
-  /           %td.text-center
-  /             %strong= "#{index+1}"
-  /           %td= link_to("#{user.first_name} #{user.last_name}", user)
-  /           %td.text-success.text-center=number_to_currency(amount_raised(user))
   - if @sponsors.count > 0
     .row
       %br

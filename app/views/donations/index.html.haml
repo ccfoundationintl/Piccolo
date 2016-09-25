@@ -10,31 +10,8 @@
   .row
     .col-md-6
       .well
-        %h3="Donate to a #{APP_CONFIG['participant_type']}"
-        %p="Send a donation to your friends, family, and fellow #{APP_CONFIG['participant_type'].pluralize(2)} to help support their fundraising efforts!"
-        .form-inline
-          = form_tag(users_path, :method => "get", id: "search-form") do
-            .input-group
-              = text_field_tag(:search, params[:search], class: "form-control input-md", placeholder: "Search")
-              %span.input-group-btn
-                %button.btn.btn-default{type:"button"}
-                  %span.glyphicon.glyphicon-search{aria: {hidden:"true"}}
-    .col-md-6
-      .well
-        %h3 Donate to a team
-        %p Send a donation to your favorite team to help support their fundraising efforts!
-        .form-inline
-          = form_tag(users_path, :method => "get", id: "search-form") do
-            .input-group
-              = text_field_tag(:search, params[:search], class: "form-control input-md", placeholder: "Search teams...")
-              %span.input-group-btn
-                %button.btn.btn-default{type:"button"}
-                  %span.glyphicon.glyphicon-search{aria: {hidden:"true"}}
-  .row
-    .col-md-6
-      .well
         %h3="Donate to #{APP_CONFIG['sitename']}"
-        %p="If you do not want to donate to a specific user or team, you can make a general donation to #{APP_CONFIG['sitename']}."
+        %p="Send a donation to support Hit the Bikes: NYC"
         = form_for :donation do
           .form-inline
             .form-group

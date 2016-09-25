@@ -37,8 +37,6 @@
               %br.visible-xs
               %li= link_to("About Us", { controller: '/about', action: :index })
               %li= link_to("Donate", donations_path)
-              %li= link_to(APP_CONFIG['participant_type'].pluralize(2), users_path)
-              %li= link_to("Teams", teams_path)
               - if Sponsor.count >= 1
                 %li= link_to("Sponsors", sponsors_path)
               %li= link_to("Info", { controller: '/about', action: :directions })
