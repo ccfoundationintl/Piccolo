@@ -41,7 +41,8 @@
               %li= link_to("Teams", teams_path)
               - if Sponsor.count >= 1
                 %li= link_to("Sponsors", sponsors_path)
-              %li= link_to("Info", { controller: '/about', action: :directions })
+              %li= link_to("Directions", { controller: '/about', action: :directions })
+              %li= link_to("Details", { controller: '/about', action: :details })
             %ul.nav.navbar-nav.navbar-right
               %li.divider-vertical.hidden-xs
               - if can? :manage, :all

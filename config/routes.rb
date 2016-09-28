@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'about/index'
   get 'about/directions'
+  get 'about/details'
   get 'welcome/index'
   get 'admin/index'
   post 'users/send_donation_email'
