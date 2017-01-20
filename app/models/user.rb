@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   validates :raise_goal, presence: {message: "Set your fundraising goal"}
   validates :gender, presence: {message: "Indicate your gender"}
   validates :tshirt, presence: {message: "Select your t-shirt size"}
-  validate :require_five_referrals, on: :create
+  #validate :require_five_referrals, on: :create
 
   has_attached_file :avatar, styles: { large: "800x800>",  medium: "400x400>", thumb: "100x100>" }, default_url: "/app_icon.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
