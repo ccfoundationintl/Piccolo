@@ -4,11 +4,11 @@
     %br
     .col-md-6.col-md-offset-3
       .well
-        %h3.text-center Pay your registration fee
+        %h3.text-center Make a donation to show your support
         %br
         = form_for @donation do
           %button{class: "btn btn-md btn-success", id: "stripeButton"}
-            Pay now
+            Make a Donation
           %span.action
             :javascript
               var handler = StripeCheckout.configure({
