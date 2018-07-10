@@ -35,13 +35,13 @@ defaults: &defaults
   donation_message: Donate to our event!
 
   # Contact Information
-  address_line_1: 123 Example St.
-  address_line_2: P.O. Box 123
-  city: Example City
-  state: Example State
-  zip_code: 123456
-  email: example@gmail.com
-  phone: 555-2345
+  address_line_1: Cape Coast, Central Region, Ghana
+  address_line_2: 5.118718, -1.267285 
+  city: PO Box 1064
+  state: 
+  zip_code: 
+  email: ccfoundationintl@gmail.com
+  phone: 
   twitter: http://www.example.twitter.com
   facebook: https://www.facebook.com/challengedchildren/
   instagram: http://www.instagram.com/example
