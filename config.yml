@@ -6,9 +6,9 @@
 defaults: &defaults
 
   # General Site Information
-  sitename: Example Event
+  sitename: Challenged Children Foundtation Intl.
   site_description: Example Event is an event at Example University founded to raise money for Example Charity.
-  url_to_site: "http://www.example.com"
+  url_to_site: "https://www.challengedchildren.org/"
 
   # University Information
   university: Example University
@@ -29,7 +29,7 @@ defaults: &defaults
   about_event: Example Event was started in 2015 to support the Brian Piccolo Cancer Research foundation. (ect ect ect)
 
   # Event Participants (dancers, runners, ect.)
-  participant_type: runner
+  participant_type: donator
 
   # Emails
   donation_message: Donate to our event!
@@ -43,7 +43,7 @@ defaults: &defaults
   email: example@gmail.com
   phone: 555-2345
   twitter: http://www.example.twitter.com
-  facebook: http://www.facebook.com/example
+  facebook: https://www.facebook.com/challengedchildren/
   instagram: http://www.instagram.com/example
   youtube: http://www.youtube.com/example
 
