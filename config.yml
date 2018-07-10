@@ -6,7 +6,7 @@
 defaults: &defaults
 
   # General Site Information
-  sitename: Challenged Children Foundtation Intl.
+  sitename: Challenged Children Foundation Intl.
   site_description: Example Event is an event at Example University founded to raise money for Example Charity.
   url_to_site: "https://www.challengedchildren.org/"
 
