@@ -1,7 +1,7 @@
 .container
   %br
   %h1.text-center Sign Up
-  %p.lead.text-center.text-muted= "You're about to join hundreds of incredible #{APP_CONFIG['participant_type'].pluralize(2)}."
+  %p.lead.text-center.text-muted= "You're about to help our children reach their utmost potential."
   %br
   .row
     .col-md-3
@@ -32,24 +32,6 @@
               %small.text-muted Passwords must contain an uppercase letter, lowercase letter, digit, and a special character
               = f.password_field(:password, id: "password", class: "form-control", autocomplete: "off", placeholder: "Enter a new password")
             %hr
-            %h4.text-center
-              .fa.fa-user.text-primary
-              General Information
-            .form-group
-              .label Sex
-              %br
-              .btn-group{data:{toggle: "buttons"}}
-                .btn.btn-primary.btn-sm
-                  .fa.fa-male
-                  Male
-                  = f.radio_button :gender, "Male"
-                .btn.btn-primary.btn-sm
-                  .fa.fa-female
-                  Female
-                  = f.radio_button :gender, "Female"
-            .form-group
-              .label Class Year
-              = f.text_field :class_year, class: "form-control", placeholder: "Enter your class year"
             .form-group
               .label
                 Team
@@ -57,34 +39,8 @@
               %br
               =f.collection_select :team_id, Team.all.order('name'), :id, :name, {prompt: "Select a team to join"}, {class: "form-control", id: "team_select"}
               = f.fields_for :team, resource.build_team do |t|
-                %a#add_team_link.text-center or create a new team
-                %div#add_team
-                  .field
-                    = t.label :name, class: "label"
-                    = t.text_field :name, class: "form-control", placeholder: "Enter a team name"
-                    = t.hidden_field :division, value: "Open"
-                    = t.hidden_field :amount_raised, value: 0
-                  .field
-                    = t.label :division, class: "label"
-                    = t.collection_select :division_id, Division.all.order('name'), :id, :name, {prompt: "Select a division for your team"}, {class: "form-control"}
             .form-group
-              .label T-Shirt Size
-              %br
-              .btn-group{data:{toggle: "buttons"}}
-                .btn.btn-primary.btn-sm
-                  Small
-                  = f.radio_button :tshirt, "Small"
-                .btn.btn-primary.btn-sm
-                  Medium
-                  = f.radio_button :tshirt, "Medium"
-                .btn.btn-primary.btn-sm
-                  Large
-                  = f.radio_button :tshirt, "Large"
-                .btn.btn-primary.btn-sm
-                  X-Large
-                  = f.radio_button :tshirt, "X-Large"
-            .form-group
-              .label What is your goal to raise?
+              .label Set a Goal!
               %br
               .btn-group{data:{toggle: "buttons"}}
                 .btn.btn-primary.btn-sm
@@ -101,27 +57,11 @@
                   = f.radio_button :raise_goal, 5000
             %br
             %hr
-            %h4.text-center
-              .fa.fa-heartbeat.text-danger
-              Safety & Medical Information
-            .form-group
-              =f.label :contact_name, class: "label"
-              =f.text_field :contact_name, class: "form-control", placeholder: "Enter an emergency contact name"
-            .form-group
-              =f.label :contact_number, class: "label"
-              =f.text_field :contact_number, class: "form-control", placeholder: "Enter an emergency contact number"
           %hr
           %h4.text-center
             .fa.fa-heart-o.text-warning
             Donation Information
-          %em.text-muted.small="Please submit the contact information of friends or family members. They will automatically be sent an email telling them about #{APP_CONFIG['sitename']} and your participation in the event, and asking if they would be willing to support you by donating to #{APP_CONFIG['charity_name']} on your behalf."
-          %h5.text-center Required
-          - 5.times do |i|
-            = f.fields_for :referrals, resource.referrals.build do |r|
-              %label.label= "Contact #{i+1}"
-              %p= r.text_field :name, placeholder: "Enter name", class: "form-control"
-              %p= r.text_field :email, placeholder: "Enter email address", class: "form-control"
-            %hr
+          %em.text-muted.small="Please submit the contact information of friends or family members. They will automatically be sent an email telling them about Challenged Children Foundation Intl., your participation in the campaign, and asking if they would be willing to support you by donating to the CC Foundation Intl. on your behalf."
           %h5.text-center Optional
           - 5.times do |i|
             = f.fields_for :referrals, resource.referrals.build do |r|
@@ -132,5 +72,5 @@
           .actions
             = button_tag(type: 'submit', class: "btn btn-success btn-md btn-block") do
               .fa.fa-check-circle-o
-              Register and pay
+              Join the campaign
   .col-md-3
