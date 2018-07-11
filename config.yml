@@ -36,13 +36,13 @@ defaults: &defaults
   donation_message: Donate to our event!
 
   # Contact Information
-  address_line_1: Cape Coast, Central Region, Ghana
-  address_line_2: 5.118718, -1.267285 
-  city: PO Box 1064
+  address_line_1: Solace Junction, Cape Coast
+  address_line_2: Central Region, Ghana
+  city: PO Box DL 1064
   state: 
   zip_code: 
   email: ccfoundationintl@gmail.com
-  phone: 
+  phone: +233 24 768 4669 / +233 24 305 9828
   twitter: http://www.example.twitter.com
   facebook: https://www.facebook.com/challengedchildren/
   instagram: http://www.instagram.com/example
