@@ -7,8 +7,8 @@ defaults: &defaults
 
   # General Site Information
   sitename: Challenged Children Foundation Intl.
-  site_description: CC Foundation Intl. is a non-profit organization based in Ghana, Africa that focuses on providing challenged children with parental support, socialization, physical therapy, and education. 
-  site_description_2: To achieve this mission, CCFI works to challenge the traditional Ghanian belief that sees disabled individuals as 'inhuman' or suffering from a ‘devil’s curse’. This common belief has caused many parents to completely cut their children with disabilities off from the world. As a result, many disabled children do not attend school, physical therapy, and are shunned from social activities. The CCFI works to not only encourage parents to care for their little ones, but also educates them and provides them with the resources to do so.
+  site_description: Challenged Children Foundation Intl. is a non-profit organization based in Ghana, Africa that focuses on providing challenged children with parental support, socialization, physical therapy, and education.
+  site_description_2: To achieve this mission, CCFI works to overcome the social and cultural stigmas surrounding disabled children. These stigmas arise from a traditional Ghanaian belief that sees disabled individuals as 'inhuman' or suffering from a ‘devil’s curse’. This belief has caused many parents to hide their disabled children from the world. As a result, many disabled children do not attend school, physical therapy, and are shunned from social activities. The CCFI works to not only encourage parents to care for their little ones, but also educates them and provides them with the resources to do so.
   url_to_site: "https://www.challengedchildren.org/"
 
   # University Information
