@@ -42,7 +42,7 @@ defaults: &defaults
   state: 
   zip_code: 
   email: ccfoundationintl@gmail.com
-  phone: +233 24 768 4669 / +233 24 305 9828
+  phone: "Phone: +233 24 768 4669 | +233 24 305 9828"
   twitter: http://www.example.twitter.com
   facebook: https://www.facebook.com/challengedchildren/
   instagram: http://www.instagram.com/example
