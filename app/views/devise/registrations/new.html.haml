@@ -33,6 +33,9 @@
               = f.password_field(:password, id: "password", class: "form-control", autocomplete: "off", placeholder: "Enter a new password")
             %hr
             .form-group
+              =f.label :bio, class: "label"
+              = f.text_area :bio, class: "form-control", rows: 8, placeholder: "Enter a bio about yourself"
+            .form-group
               .label
                 Team
                 %span.text-muted (Optional)
@@ -55,14 +58,13 @@
                   $5,000
                   = f.radio_button :raise_goal, 5000
             %br
-            %hr
           %hr
           %h4.text-center
             .fa.fa-heart-o.text-warning
             Donation Information
           %em.text-muted.small="Please submit the contact information of friends or family members. They will automatically be sent an email telling them about Challenged Children Foundation Intl., your participation in the campaign, and asking if they would be willing to support you by donating to the CC Foundation Intl. on your behalf."
           %h5.text-center Optional
-          - 5.times do |i|
+          - 3.times do |i|
             = f.fields_for :referrals, resource.referrals.build do |r|
               %label.label= "Contact #{i+1}"
               %p= r.text_field :name, placeholder: "Enter name", class: "form-control"

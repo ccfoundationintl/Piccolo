@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :teams
   resources :users
 
-  get 'about/index'
+  # get 'about/index'
+  get 'about/mission'
+  get 'about/team'
+  get 'about/beginnings'
   get 'welcome/index'
   get 'admin/index'
   post 'users/send_donation_email'

@@ -2,6 +2,8 @@
   .page-header.text-center
     %h1
       = APP_CONFIG['participant_type'].pluralize(2).capitalize
+    .text-center
+      %p= link_to("Sign up", new_user_registration_path, class: "btn btn-primary btn-lg")
   - if params[:search].nil?
     .row
       %h3

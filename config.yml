@@ -17,8 +17,8 @@ defaults: &defaults
   university_location: Example City, EX
 
   # Donation Information
-  charity_name: Example Charity
-  donation_tagline: Support our participants
+  charity_name: Challenged Children Foundation Intl.
+  donation_tagline: Support Our Children
 
   # Donation Email
   donation_email_text: I have pledged to participate in the Example Event. This event benefits the Example Charity, which supports xx research. It is the largest student philanthropy event at Example University. I would be honored if you could donate to my campaign.
@@ -39,8 +39,8 @@ defaults: &defaults
   address_line_1: Solace Junction, Cape Coast
   address_line_2: Central Region, Ghana
   city: PO Box DL 1064
-  state: 
-  zip_code: 
+  state:
+  zip_code:
   email: ccfoundationintl@gmail.com
   phone: "Phone: +233 24 768 4669 | +233 24 305 9828"
   twitter: http://www.example.twitter.com

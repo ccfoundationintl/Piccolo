@@ -45,8 +45,7 @@
               %br
               %br
               %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
-                %b Give by  
-                %i.fa.fa-1x.fa-credit-card
+                %b Make a Donation
               %span.action
                 :javascript
                   var handler = StripeCheckout.configure({
@@ -82,7 +81,7 @@
     .col-md-6
       .well
         %h3 Send in donations by mail
-        %p="We also accept cash or check donations! Checks can be made out to the #{APP_CONFIG['charity_name']}. If you would like this amount to be credited to a specific user, organization, or department, simply include a note with that information in the envelope. All donations can be sent to:"
+        %p="We also accept cash or check donations! Checks can be made out to the #{APP_CONFIG['charity_name']} If you would like this amount to be credited to a specific user, organization, or department, simply include a note with that information in the envelope. All donations can be sent to:"
         %address
           %strong=APP_CONFIG['charity_name']
           %br

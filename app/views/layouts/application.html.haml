@@ -36,7 +36,15 @@
               %li.divider-vertical.hidden-xs
               %br.visible-xs
               %br.visible-xs
-              %li= link_to("About Us", { controller: '/about', action: :index })
+              %li
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "/about/index", :role => "button"} About Us
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "/about/mission"} Our Mission & Vision
+                  %li
+                    %a{:href => "/about/beginnings"} Our Beginnings
+                  %li
+                    %a{:href => "/about/team"} Our Team
               %li= link_to("Donate", donations_path)
               %li= link_to("Join the Campaign", users_path)
               %li= link_to("Teams", teams_path)
@@ -81,7 +89,7 @@
             = APP_CONFIG['address_line_2']
             %br
             = APP_CONFIG['city']
-            
+
             = APP_CONFIG['state']
             = APP_CONFIG['zip_code']
             %br
