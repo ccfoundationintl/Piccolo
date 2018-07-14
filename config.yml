@@ -30,7 +30,7 @@ defaults: &defaults
   about_event: Example Event was started in 2015 to support the Brian Piccolo Cancer Research foundation. (ect ect ect)
 
   # Event Participants (dancers, runners, ect.)
-  participant_type: donator
+  participant_type: participant
 
   # Emails
   donation_message: Donate to our event!
