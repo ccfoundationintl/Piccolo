@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # Stripe API for payment processing
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 
+gem 'dotenv-rails'
+
 # Paperclip for uploading file attachments
 gem 'paperclip'
 

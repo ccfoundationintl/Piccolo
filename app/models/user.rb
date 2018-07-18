@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   #validates :tshirt, presence: {message: "Select your t-shirt size"}
   #validate :require_five_referrals, on: :create
 
-  has_attached_file :avatar, styles: { large: "800x800>",  medium: "400x400>", thumb: "100x100>" }, default_url: "/app_icon.jpg"
+  has_attached_file :avatar, styles: { large: "800x800>",  medium: "400x400>", thumb: "100x100>" }, default_url: "/app-icon.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validate :password_complexity, on: :create
 

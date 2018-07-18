@@ -83,7 +83,7 @@
       %p.text-muted
         Send a donation to
         = @user.first_name
-        to help
+        to support
         - if @user.gender == "Male"
           his
         - else
@@ -120,7 +120,7 @@
                   if(amount > 0) {
                     handler.open({
                       name: "#{APP_CONFIG['charity_name']}",
-                      image: "/images/app_icon.png",
+                      image: "/images/app-icon.jpg",
                       description: "#{APP_CONFIG['donation_tagline']}",
                       amount: amount*100,
                       billingAddress: true

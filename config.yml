@@ -17,7 +17,7 @@ defaults: &defaults
   university_location: Example City, EX
 
   # Donation Information
-  charity_name: Challenged Children Foundation Intl.
+  charity_name: CC Foundation Intl.
   donation_tagline: Support Our Children
 
   # Donation Email

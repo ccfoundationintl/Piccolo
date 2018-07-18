@@ -16,14 +16,14 @@
       .panel.panel-default.panel-body
         %h4
           = @team.name
-          has raised 
+          has raised
           %span.text-success= number_to_currency(@team.amount_raised)
         .progress
           .progress-bar.progress-bar-success.progress-bar-striped{:role => "progressbar", :style => "width: #{number_to_percentage(@amount_raised_goal, precision: 0)}", "aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "#{@amount_raised_goal}"}
             =number_to_percentage(@amount_raised_goal, precision: 0)
         %hr
         %p.text-muted
-          Send a donation to 
+          Send a donation to
           = @team.name
           to help their campaign!
         = form_for @charge do
@@ -36,7 +36,7 @@
               %br
               %br
               %button{class: "btn btn-block btn-lg btn-primary donation-amount-btn", id: "stripeButton"}
-                %b Give by  
+                %b Give by
                 %i.fa.fa-1x.fa-credit-card
               %span.action
                 :javascript
@@ -59,7 +59,7 @@
                     if(amount > 0) {
                       handler.open({
                         name: "#{APP_CONFIG['charity_name']}",
-                        image: "/images/app_icon.png",
+                        image: "/images/app-icon.jpg",
                         description: "#{APP_CONFIG['donation_tagline']}",
                         amount: amount*100,
                         billingAddress: true

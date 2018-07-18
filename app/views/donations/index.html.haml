@@ -1,12 +1,12 @@
 - content_for :head do
   %meta{:content => "Make a donation", :property => "og:title"}/
-  %meta{:content => "#{root_url}/images/app_icon.png", :property => "og:image"}/
-  %meta{:content => "#{root_url}/images/app_icon.png", :property => "og:image:url"}/
+  %meta{:content => "#{root_url}/images/app-icon.jpg", :property => "og:image"}/
+  %meta{:content => "#{root_url}/images/app-icon.jpg", :property => "og:image:url"}/
   %meta{:content => "#{request.original_url}", :property => "og:url"}/
   %meta{:content => "#{APP_CONFIG['site_description']}", :property => "og:description"}/
 .container
   .page-header.text-center
-    %h1 Support Us
+    %h1 Support Our Children
   .row
     .col-md-6
       .well
@@ -34,7 +34,7 @@
     .col-md-6
       .well
         %h3="Donate to #{APP_CONFIG['sitename']}"
-        %p="If you do not want to donate to a specific user or team, you can make a general donation to #{APP_CONFIG['sitename']}."
+        %p="If you do not want to donate to a specific user or team, you can make a general donation to #{APP_CONFIG['sitename']}"
         = form_for :donation do
           .form-inline
             .form-group
@@ -65,7 +65,7 @@
                     if(amount > 0) {
                       handler.open({
                         name: "#{APP_CONFIG['charity_name']}",
-                        image: "/images/app_icon.png",
+                        image: "/images/app-icon.jpg",
                         description: "#{APP_CONFIG['donation_tagline']}",
                         amount: amount*100,
                         billingAddress: true
@@ -89,7 +89,7 @@
           %br
           = APP_CONFIG['address_line_2']
           %br
-          = "#{APP_CONFIG['city']}, #{APP_CONFIG['state']} #{APP_CONFIG['zip_code']}"
+          = "#{APP_CONFIG['city']} #{APP_CONFIG['state']} #{APP_CONFIG['zip_code']}"
   - if can? :manage, Donation
     .row
       .col-md-6

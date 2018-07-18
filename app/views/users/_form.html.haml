@@ -4,7 +4,7 @@
       .col-md-3
         %p Change your profile picture
         = image_tag @user.avatar.url(:medium), class: "img-responsive img-rounded"
-        = f.label :avatar, "Upload a new photo", class: "label"
+        = f.label :avatar, "Upload a new Profile Picture", class: "label"
         = f.file_field :avatar, class: "form-control"
       .col-md-6
         .well
@@ -36,8 +36,20 @@
               .fa.fa-user.text-primary
               General Information
             .form-group
+              .label Sex
+              %br
+              .btn-group{data:{toggle: "buttons"}}
+                .btn.btn-primary.btn-sm
+                  .fa.fa-male
+                  Male
+                  = f.radio_button :gender, "Male"
+                .btn.btn-primary.btn-sm
+                  .fa.fa-female
+                  Female
+                  = f.radio_button :gender, "Female"
+            .form-group
               =f.label :bio, class: "label"
-              = f.text_area :bio, class: "form-control", rows: 8, placeholder: "Enter a bio about yourself"
+              = f.text_area :bio, class: "form-control", rows: 8, placeholder: "Explain a little about yourself and why you're joining the campaign"
             .form-group
               .label
                 Team
