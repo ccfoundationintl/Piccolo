@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   # get 'about/index'
   get 'about/mission'
+  get 'about/children'
   get 'about/team'
   get 'about/beginnings'
   get 'welcome/index'
