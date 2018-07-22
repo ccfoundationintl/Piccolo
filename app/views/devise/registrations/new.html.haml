@@ -61,9 +61,6 @@
                     = t.text_field :name, class: "form-control", placeholder: "Enter a team name"
                     = t.hidden_field :division, value: "Open"
                     = t.hidden_field :amount_raised, value: 0
-                  .field
-                    = t.label :division, class: "label"
-                    = t.collection_select :division_id, Division.all.order('name'), :id, :name, {prompt: "Select a division for your team"}, {class: "form-control"}
             .form-group
               .label Set a Goal!
               %br

@@ -14,6 +14,6 @@
 #
 
 class Sponsor < ActiveRecord::Base
-  has_attached_file :logo, styles: { large: "800x800>",  medium: "400x400>", thumb: "100x100>" }, default_url: "/app-icon.jpg"
+  has_attached_file :logo, styles: { large: "800x800>",  medium: "400x400>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/ccfoundationintl/app-icon.ico"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 end
