@@ -85,11 +85,9 @@
         %address
           %strong=APP_CONFIG['charity_name']
           %br
-          = APP_CONFIG['address_line_1']
+          PO Box DL 1064
           %br
-          = APP_CONFIG['address_line_2']
-          %br
-          = "#{APP_CONFIG['city']} #{APP_CONFIG['state']} #{APP_CONFIG['zip_code']}"
+          Cape Coast, Central Region, Ghana
   - if can? :manage, Donation
     .row
       .col-md-6
