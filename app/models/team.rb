@@ -16,6 +16,6 @@ class Team < ActiveRecord::Base
   belongs_to :division
 
   def self.search(query)
-    where("name LIKE ?", "%#{query}%")
+    where("name ILIKE ?", "%#{query}%")
   end
 end
