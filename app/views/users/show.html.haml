@@ -94,7 +94,7 @@
           .form-group
             .input-group
               %span.pre-input $
-              = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off", value: 10
+              = text_field_tag :donation_amount, params[:donation_amount], class: "form-control input-lg donation-amount", id: "total-amount-val", autofocus: true, autocomplete: "off"
               %span.post-input USD
             %br
             %br
@@ -170,4 +170,3 @@
               = link_to "Edit", edit_donation_path(donation), class: "btn btn-xs btn-default"
               = link_to "Delete", donation, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs"
   .col-md-1
-
