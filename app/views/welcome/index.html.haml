@@ -52,6 +52,13 @@
                         handler.close();
                       });
           = link_to "Or Join the Campaign", new_user_registration_path, class: "btn btn-md btn-default btn-sign-up"
+          %h4
+            We have raised
+            %span.text-success= number_to_currency(@amount_raised)
+            so far!
+          .progress
+            .progress-bar.progress-bar-success.progress-bar-striped{:role => "progressbar", :style => "width: #{number_to_percentage(@amount_raised_goal, precision: 0)}", "aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "#{@amount_raised_goal}"}
+              =number_to_percentage(@amount_raised_goal, precision: 0)
 .container
   .row
     .col-md-10.col-md-offset-1.text-center
@@ -78,7 +85,7 @@
             %td.text-center
               %strong= "#{index+1}"
             %td= link_to("#{user.first_name} #{user.last_name}", user)
-            %td.text-success.text-center=number_to_currency(amount_raised(user))
+            %td.text-success.text-center=number_to_currency(user.total_raised)
   - if @sponsors.count > 0
     .row
       %br
